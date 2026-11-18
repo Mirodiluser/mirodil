@@ -4,7 +4,9 @@ import Link from "next/link";
 import {useEffect,useState} from "react";
 import {motion,MotionConfig,useReducedMotion,useScroll,useSpring} from "motion/react";
 import {ArrowUpRight,ChevronDown,FileText,Globe2,Menu,X} from "lucide-react";
-import {locales,pages,profile,examRecords,sourceLinks,type Locale,type Page} from "@/lib/profile";
+import {locales,pages,profile,sourceLinks,type Locale,type Page} from "@/lib/profile";
+import {CertificateShowcase} from "./CertificateShowcase";
+import {MediaPage} from "./MediaPage";
 
 const serif={fontFamily:"'Iowan Old Style', Baskerville, Georgia, serif"};
 const shell="mx-auto w-full max-w-[1500px] px-6 sm:px-10 lg:px-[76px]";
@@ -71,7 +73,7 @@ const d=profile[lang];const n=pages.indexOf(section)+1;
 return <section className="relative overflow-hidden border-b border-[#c6aa7d]/20"><div className={shell+" relative pb-14 pt-20 lg:pb-20 lg:pt-28"}><div aria-hidden className="pointer-events-none absolute right-[6%] top-16 text-[250px] italic leading-none text-[#c7aa7d]/[.045]" style={serif}>0{n}</div><Reveal><Eyebrow index={"0"+n}>{d.section}</Eyebrow></Reveal>
 <Reveal delay={0.07}><h1 className="relative mt-12 max-w-[1180px] text-[clamp(56px,7.5vw,122px)] leading-[.99] tracking-[-.065em] text-[#f2ecdf]" style={serif}>{title}<span className="text-[#ba9b70]">.</span></h1></Reveal>
 <Reveal delay={0.16}><p className="mt-11 max-w-3xl border-l border-[#c6aa7d]/60 pl-7 text-[clamp(20px,2.3vw,31px)] leading-[1.62] text-[#b9bfb3]">{subtitle}</p></Reveal>
-<div className="mt-20 flex justify-between gap-4 border-t border-[#c6aa7d]/20 pt-6 text-[10px] tracking-[.17em] text-[#9ea596]"><span>{d.navLabel} / {d.nav[n]}</span><span>0{n} / 04</span></div></div></section>;
+<div className="mt-20 flex justify-between gap-4 border-t border-[#c6aa7d]/20 pt-6 text-[10px] tracking-[.17em] text-[#9ea596]"><span>{d.navLabel} / {d.nav[n]}</span><span>0{n} / 05</span></div></div></section>;
 }
 function Biography({lang}:{lang:Locale}){const d=profile[lang];
 return <><Chapter lang={lang} section="biography" title={d.bioTitle} subtitle={d.bioSubtitle}/>
@@ -83,9 +85,7 @@ function Academic({lang}:{lang:Locale}){const d=profile[lang];
 return <><Chapter lang={lang} section="academic" title={d.academicTitle} subtitle={d.academicSubtitle}/>
 <section className={shell+" grid gap-14 py-24 lg:grid-cols-[.9fr_1fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>01 / SCHOOL</Eyebrow><h2 className="mt-10 text-[clamp(51px,5.7vw,83px)] leading-[1.08] tracking-[-.05em]" style={serif}>{d.schoolTitle}</h2></Reveal><Reveal delay={0.1} className="flex flex-col justify-center"><p className="max-w-xl text-[clamp(19px,2vw,26px)] leading-[1.9] text-[#bec4b8]">{d.schoolBody}</p></Reveal></section>
 <section className="border-y border-[#c6aa7d]/20 bg-[#141915]"><div className={shell+" grid items-center gap-14 py-24 md:grid-cols-[.8fr_1.2fr] lg:gap-24"}><Reveal><p className="text-[clamp(115px,17vw,240px)] leading-[.87] tracking-[-.10em] text-[#d5bd96]" style={serif}>142<span className="text-[#a38a62]">,7</span></p><span className={"mt-7 block "+label}>{d.admissionLabel}</span></Reveal><Reveal delay={0.1}><p className="max-w-[590px] border-l border-[#c6aa7d]/50 pl-8 text-[clamp(20px,2.1vw,28px)] leading-[1.8] text-[#c8ccbe]">{d.admissionBody}</p></Reveal></div></section>
-<section className={shell+" py-24 lg:py-36"}><Reveal><Eyebrow>02 / RECORDS</Eyebrow><h2 className="mt-10 text-[clamp(51px,5.7vw,85px)] tracking-[-.055em]" style={serif}>{d.scoresTitle}</h2><p className={"mt-7 max-w-3xl text-[15px] leading-[1.9] "+muted}>{d.scoreNote}</p></Reveal>
-<div className="mt-14 grid border-y border-[#c6aa7d]/25 md:grid-cols-3">{examRecords.map((rec,i)=><Reveal delay={i*.1} key={rec.label} className={"py-11 md:px-9 "+(i>0?"border-t border-[#c6aa7d]/20 md:border-l md:border-t-0":"")}><span className={label}>{rec.label}</span><p className="mt-8 text-[clamp(80px,8vw,122px)] leading-none tracking-[-.08em] text-[#e9dfcc]" style={serif}>{rec.value}</p></Reveal>)}</div></section>
-<section className="border-y border-[#c6aa7d]/20 bg-[#141915]"><div className={shell+" grid gap-14 py-24 lg:grid-cols-2 lg:gap-24"}><Reveal><Eyebrow>03 / DOCUMENTS</Eyebrow><h2 className="mt-10 text-[clamp(50px,5.5vw,78px)] leading-[1.08]" style={serif}>{d.certTitle}</h2><p className={"mt-7 max-w-lg text-[16px] leading-[1.9] "+muted}>{d.certBody}</p></Reveal><Reveal delay={0.12}><div className="flex min-h-[340px] flex-col items-center justify-center border border-dashed border-[#c6aa7d]/35 bg-[#101510] p-10 text-center"><FileText size={35} strokeWidth={1.1} className="text-[#c5a87c]"/><p className="mt-8 text-[25px] leading-[1.4] text-[#dcd6c8]" style={serif}>{d.pending}</p></div></Reveal></div></section>
+<CertificateShowcase lang={lang}/>
 <div className={shell+" flex flex-wrap items-center justify-between gap-6 py-12"}><span className={label}>UWED · ACADEMIC LYCEUM</span><a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer" className={"group inline-flex items-center gap-3 text-[12px] text-[#e4c89b] hover:text-white "+ring}>{d.openSource}<motion.span whileHover={{x:3,y:-3}}><ArrowUpRight size={17}/></motion.span></a></div></>;
 }
 function Projects({lang}:{lang:Locale}){const d=profile[lang];
@@ -105,7 +105,7 @@ function Activities({lang}:{lang:Locale}){const d=profile[lang];
 return <><Chapter lang={lang} section="public-life" title={d.lifeTitle} subtitle={d.lifeSubtitle}/>
 <section className={shell+" grid gap-14 py-24 lg:grid-cols-[.85fr_1.15fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>01 / SPORT</Eyebrow><h2 className="mt-10 text-[clamp(54px,5.9vw,88px)] leading-[1.06] tracking-[-.06em]" style={serif}>{d.sportsTitle}</h2></Reveal><Reveal delay={0.1} className="flex items-center"><p className="max-w-xl text-[clamp(20px,2.2vw,29px)] leading-[1.82] text-[#bfc6b8]">{d.sportsIntro}</p></Reveal></section>
 <section className="border-y border-[#c6aa7d]/20 bg-[#141915]"><div className={shell+" py-20"}><div className="grid border-y border-[#c6aa7d]/20 md:grid-cols-3">{d.sports.map((name,i)=><Reveal delay={i*.1} key={i} className={"py-12 md:px-9 "+(i>0?"border-t border-[#c6aa7d]/20 md:border-l md:border-t-0":"")}><span className={label}>0{i+1} / DISCIPLINE</span><p className="mt-10 text-[clamp(46px,4.8vw,67px)] leading-[1.1]" style={serif}>{name}</p></Reveal>)}</div><p className={"mt-7 max-w-xl text-[13px] leading-[1.8] "+muted}>{d.sportsNote}</p></div></section>
-<section className={shell+" grid gap-14 py-24 lg:grid-cols-[.85fr_1.15fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>02 / INITIATIVES</Eyebrow><h2 className="mt-10 text-[clamp(70px,8.5vw,126px)] leading-[.9] tracking-[-.06em] text-[#e9dfce]" style={serif}>Nuriyat<br/><span className="italic text-[#c9ad83]">Ilmi.</span></h2></Reveal><Reveal delay={0.12} className="flex flex-col justify-center"><h3 className="text-[clamp(25px,2.7vw,38px)] text-[#e2dbc9]" style={serif}>{d.initiativeTitle}</h3><p className="mt-8 max-w-xl text-[18px] leading-[1.95] text-[#b7bfb0]">{d.initiativeBody}</p></Reveal></section></>;
+<section className={shell+" grid gap-14 py-24 lg:grid-cols-[.85fr_1.15fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>02 / LEADERSHIP & INITIATIVES</Eyebrow><h2 className="mt-10 text-[clamp(70px,8.5vw,126px)] leading-[.9] tracking-[-.06em] text-[#e9dfce]" style={serif}>Nuriyat<br/><span className="italic text-[#c9ad83]">Ilmi.</span></h2></Reveal><Reveal delay={0.12} className="flex flex-col justify-center"><h3 className="text-[clamp(25px,2.7vw,38px)] text-[#e2dbc9]" style={serif}>{d.initiativeTitle}</h3><p className="mt-8 max-w-xl text-[18px] leading-[1.95] text-[#b7bfb0]">{d.initiativeBody}</p></Reveal></section></>;
 }
 export function ProfileSite({lang,page}:{lang:Locale;page?:Page}){
 const {scrollYProgress}=useScroll();
@@ -113,5 +113,5 @@ const scaleX=useSpring(scrollYProgress,{stiffness:120,damping:27,restDelta:0.001
 return <MotionConfig reducedMotion="user"><div className="relative min-h-screen overflow-x-clip bg-[#0b100d] text-[#f0ebdf]" style={{backgroundImage:"radial-gradient(ellipse at 85% 0%,rgba(141,110,67,.13),transparent 37%),radial-gradient(ellipse at 0% 67%,rgba(48,67,49,.13),transparent 48%)"}}>
 <motion.div style={{scaleX,transformOrigin:"0%"}} aria-hidden className="fixed left-0 right-0 top-0 z-[80] h-[2px] bg-[#d2b184]"/>
 <div aria-hidden className="pointer-events-none fixed inset-0 opacity-[.045]" style={{backgroundImage:"url(\"data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E\")"}}/>
-<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:<Activities lang={lang}/>}</main><Footer lang={lang}/></div></MotionConfig>;
+<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:page==="public-life"?<Activities lang={lang}/>:<MediaPage lang={lang}/>}</main><Footer lang={lang}/></div></MotionConfig>;
 }

@@ -8,7 +8,7 @@ const {lang,section}=await params;
 if(!locales.includes(lang as Locale)||!pages.includes(section as Page))return {};
 const d=profile[lang as Locale];
 const i=pages.indexOf(section as Page);
-const description=[d.bioSubtitle,d.academicSubtitle,d.projectsSubtitle,d.lifeSubtitle][i];
+const description=[d.bioSubtitle,d.academicSubtitle,d.projectsSubtitle,d.lifeSubtitle,d.meta][i];
 return {title:d.nav[i+1],description,alternates:{canonical:"/"+lang+"/"+section,languages:Object.fromEntries(locales.map(l=>[l,"/"+l+"/"+section]))}};
 }
 export default async function PageView({params}:{params:Promise<{lang:string;section:string}>}){
