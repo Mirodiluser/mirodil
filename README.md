@@ -4,21 +4,21 @@ Premium editorial website, in English, Russian and Uzbek, for documenting biogra
 
 ## Information architecture
 
-- \`/en\`, \`/ru\`, \`/uz\`: overview, no repeated navigation buttons
-- \`/{lang}/biography\`: long-form biography, areas of work and timeline
-- \`/{lang}/academic\`: SAT 1440, IELTS 6.5, National Mathematics Certificate B — **subject-reported** pending evidence
-- \`/{lang}/projects\`: Tahrir AI (public frontend code) and UWED AI (private and unofficial educational prototype)
-- \`/{lang}/public-life\`: Nuriyat Ilmi and publications, with only verified press citations
+- `/en`, `/ru`, `/uz`: overview, no repeated navigation buttons
+- `/{lang}/biography`: long-form biography, areas of work and timeline
+- `/{lang}/academic`: SAT 1440, IELTS 6.5, National Mathematics Certificate B — **subject-reported** pending evidence
+- `/{lang}/projects`: Tahrir AI (public frontend code) and UWED AI (private and unofficial educational prototype)
+- `/{lang}/public-life`: Nuriyat Ilmi and publications, with only verified press citations
 
 ## Running on Render
 
-\`\`\`bash
+```bash
 npm install
 npm run build
 npm run start
-\`\`\`
+```
 
-Render typically provides \`RENDER_EXTERNAL_URL\`. Set \`NEXT_PUBLIC_SITE_URL\` to your preferred canonical domain (without trailing slash) when using a custom domain. By default the website is **blocked from indexing**, while the public content and document details are reviewed. After approving the content, set \`NEXT_PUBLIC_ALLOW_INDEXING=true\`, deploy, and verify \`/robots.txt\` and \`/sitemap.xml\` before submitting to Google Search Console.
+Render typically provides `RENDER_EXTERNAL_URL`. Set `NEXT_PUBLIC_SITE_URL` to your preferred canonical domain (without trailing slash) when using a custom domain. By default the website is **blocked from indexing**, while the public content and document details are reviewed. After approving the content, set `NEXT_PUBLIC_ALLOW_INDEXING=true`, deploy, and verify `/robots.txt` and `/sitemap.xml` before submitting to Google Search Console.
 
 ## Source integrity
 
@@ -32,6 +32,6 @@ Render typically provides \`RENDER_EXTERNAL_URL\`. Set \`NEXT_PUBLIC_SITE_URL\` 
 
 ## Updating the biography
 
-Data and all three language versions are in \`lib/story.ts\`, alongside the evidence and source links. Responsive components in \`components/Archive.tsx\`; layout and SEO in \`app/[lang]/layout.tsx\`.
+Data and all three language versions are in `lib/story.ts`, alongside the evidence and source links. Responsive components in `components/Archive.tsx`; layout and SEO in `app/[lang]/layout.tsx`.
 
-The old \`lib/data.ts\` and \`components/Site.tsx\` are superseded and no longer used.
+The old `lib/data.ts` and `components/Site.tsx` are superseded and no longer used.

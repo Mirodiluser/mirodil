@@ -30,10 +30,9 @@ return <header className="sticky top-0 z-50 border-b border-[#c5a77d]/20 bg-[#0b
 {open&&<nav className={shell+" grid border-t border-[#c5a77d]/20 py-4 lg:hidden"}>{sections.map((key,i)=><Link key={key} href={href(lang,key)} className="border-b border-[#c5a77d]/15 py-4 text-sm text-[#efe9dc]">{d.nav[i]}</Link>)}</nav>}
 </header>;
 }
-function Footer({lang}:{lang:Language}){const d=copy[lang];return <footer className="border-t border-[#c5a77d]/20 bg-[#070908]"><div className={shell+" grid gap-12 py-16 lg:grid-cols-[1.1fr_.8fr_.9fr]"}>
+function Footer({lang}:{lang:Language}){const d=copy[lang];return <footer className="border-t border-[#c5a77d]/20 bg-[#070908]"><div className={shell+" grid gap-12 py-16 lg:grid-cols-[1.1fr_.9fr]"}>
 <div><span className="text-[45px] italic text-[#c6a77a]" style={serif}>MH.</span><h3 className="mt-4 text-[29px]" style={serif}>Mirodil Hayitov</h3><p className={"mt-3 max-w-xs text-[12px] leading-7 "+faded}>{d.footer}</p></div>
-<div><span className={small}>{d.archive}</span><div className="mt-6 grid gap-3">{sections.map((key,i)=><Link className="w-fit text-[12px] text-[#adb0a6] hover:text-[#ead0a4]" key={key} href={href(lang,key)}>{d.nav[i]}</Link>)}</div></div>
-<div><span className={small}>PUBLIC PROFILE</span><div className="mt-6"><Jump to={publicSources.github} external><Github size={14}/> GitHub / Mirodiluser</Jump></div><p className={"mt-5 max-w-sm text-[12px] leading-7 "+faded}>{d.footerSub}</p></div>
+<div className="lg:pt-5"><span className={small}>{d.provenance}</span><p className={"mt-6 max-w-lg text-[13px] leading-8 "+faded}>{d.footerSub}</p></div>
 </div><div className={shell+" flex flex-wrap justify-between gap-4 border-t border-[#c5a77d]/15 py-5 text-[10px] tracking-[.17em] text-[#8d968a]"}><span>© 2026 MIRODIL HAYITOV</span><span>INDEPENDENT PERSONAL ARCHIVE</span></div></footer>}
 function Sources({lang}:{lang:Language}){const d=copy[lang];const items=[publicSources.lyceum,publicSources.github,publicSources.tahrir];return <section className="border-t border-[#c5a77d]/20 bg-[#121713]/75"><div className={shell+" grid gap-12 py-24 lg:grid-cols-[.8fr_1.2fr] lg:gap-24"}>
 <div><Heading label={d.provenance} num="05"/><h2 className="mt-8 max-w-xl text-[clamp(50px,5.5vw,78px)] leading-[1.05] tracking-[-.06em]" style={serif}>{d.sourceTitle}</h2><p className={"mt-7 max-w-md text-[15px] leading-[1.85] "+faded}>{d.sourceIntro}</p></div>
