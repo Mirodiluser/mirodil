@@ -16,7 +16,7 @@ const theme:{[key:string]:{stroke:string;light:string;bg:string}}={
 export function CertificateShowcase({lang}:{lang:Locale}){
 const d=certifications[lang];const reduced=useReducedMotion();
 return <section className="border-y border-[#c6aa7d]/20 bg-[#101610]"><div className={shell+" py-24 lg:py-36"}>
-<div className="flex items-center gap-4"><Award size={19} className="text-[#c9ad82]"/><span className={label}>CERTIFICATES / VERIFIED DOCUMENT IMAGES</span></div>
+<div className="flex items-center gap-4"><Award size={19} className="text-[#c9ad82]"/><span className={label}>CERTIFICATES / PRIVACY-REDACTED SCANS</span></div>
 <h2 className="mt-10 max-w-[1050px] text-[clamp(54px,6.1vw,90px)] leading-[1.03] tracking-[-.06em]" style={serif}>{d.title}</h2><p className="mt-7 max-w-3xl text-[17px] leading-[1.85] text-[#b2b9ac]">{d.description}</p>
 <div className="mt-16 space-y-16">{d.certificates.map((item,i)=>{const cl=theme[item.accent];return <motion.article key={item.id} initial={reduced?false:{opacity:0,y:35}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.15}} transition={{duration:.75,ease:[.22,1,.36,1]}} className={"grid gap-9 border p-5 sm:p-9 lg:grid-cols-[.95fr_1.05fr] lg:gap-12 "+cl.stroke+" "+cl.bg}>
 <div className="flex flex-col justify-between"><div><p className={label}>0{i+1} / {item.kind}</p><h3 className="mt-8 text-[clamp(42px,4.7vw,68px)] leading-[1.04] tracking-[-.05em] text-[#f0e9dd]" style={serif}>{item.name}</h3><div className={"mt-7 text-[clamp(87px,10vw,152px)] leading-none tracking-[-.09em] "+cl.light} style={serif}>{item.score}</div><p className="mt-4 text-[15px] leading-7 text-[#c0c4b9]">{item.tagline}</p></div>
