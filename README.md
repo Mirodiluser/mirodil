@@ -1,37 +1,50 @@
-# Mirodil Hayitov — Personal Archive
+# Mirodil Hayitov — Official-style Personal Archive
 
-Premium editorial website, in English, Russian and Uzbek, for documenting biography, education, software projects and student initiatives without portrait photography.
+A premium, three-language editorial profile (Uzbek, Russian, English) with **no portrait photography**. The website records information supplied directly by Mirodil Hayitov.
 
-## Information architecture
+## Pages and navigation
 
-- `/en`, `/ru`, `/uz`: overview, no repeated navigation buttons
-- `/{lang}/biography`: long-form biography, areas of work and timeline
-- `/{lang}/academic`: SAT 1440, IELTS 6.5, National Mathematics Certificate B — **subject-reported** pending evidence
-- `/{lang}/projects`: Tahrir AI (public frontend code) and UWED AI (private and unofficial educational prototype)
-- `/{lang}/public-life`: Nuriyat Ilmi and publications, with only verified press citations
+- \`/uz\`, \`/ru\`, \`/en\` — home: only an editorial hero and introduction; **no links/cards leading to other internal pages**
+- \`/{lang}/biography\` — the main biography (original Uzbek text is preserved verbatim)
+- \`/{lang}/academic\` — former school No. 246, admission in 2026 with 142.7 points, exams and certificates
+- \`/{lang}/projects\` — Tahrir AI, Boburnoma Parallel Korpusi research, unofficial UWED AI prototype
+- \`/{lang}/public-life\` — chess, karate, boxing and Nuriyat Ilmi
 
-## Running on Render
+**All internal navigation is from the header navigation (desktop and mobile).** The footer does not repeat the section menu.
 
-```bash
+## Design and animation
+
+- Next.js App Router, Tailwind CSS and **Motion for React**
+- Staggered editorial reveals and scroll-triggered transitions
+- Spring reactions on navigation, menus and project interactions
+- Entry animation in \`app/[lang]/template.tsx\` on each navigation
+- Scroll progress indicator; slow ambient hero animation
+- Reduced-motion user preferences respected by Motion and CSS
+
+## Source and privacy
+
+The Uzbek biography was provided by the website subject. Sports wins and exam scores are presented as supplied information, not independently verified official records. No personal certificate IDs, QR codes, home address, phone numbers or private contact details appear on the website.
+
+- UWED institutional website: https://www.uwed.uz/en/pages/lyceum-6 (confirms institution's existence, not the individual's enrollment).
+- Developer GitHub: https://github.com/Mirodiluser
+- Tahrir AI frontend repository: https://github.com/Mirodiluser/frontend
+- UWED AI is a private, unofficial prototype and should not be presented as an institutional service.
+
+## Deployment on Render
+
+\`\`\`bash
 npm install
 npm run build
 npm run start
-```
+\`\`\`
 
-Render typically provides `RENDER_EXTERNAL_URL`. Set `NEXT_PUBLIC_SITE_URL` to your preferred canonical domain (without trailing slash) when using a custom domain. By default the website is **blocked from indexing**, while the public content and document details are reviewed. After approving the content, set `NEXT_PUBLIC_ALLOW_INDEXING=true`, deploy, and verify `/robots.txt` and `/sitemap.xml` before submitting to Google Search Console.
+Render provides \`RENDER_EXTERNAL_URL\`. Optionally set \`NEXT_PUBLIC_SITE_URL\` for a custom canonical domain.
 
-## Source integrity
+The site remains **noindex by default** until the owner reviews the information and wishes to make it searchable. When ready, set \`NEXT_PUBLIC_ALLOW_INDEXING=true\` and verify \`/robots.txt\` and \`/sitemap.xml\`.
 
-- University institutional page: https://www.uwed.uz/en/pages/lyceum-6 (confirms the institution, not an individual's admission).
-- Public development profile: https://github.com/Mirodiluser
-- Tahrir AI frontend repository: https://github.com/Mirodiluser/frontend
-- Self-reported exam results are explicitly labelled. **No certificate images are included** until safely redacted and approved.
-- Do not publish home address, private email or phone number, exam registration IDs, QR verification codes, official student data, or portrait photos.
-- UWED AI is **not official** and must not be represented as an endorsed institutional service.
-- Other sites with the name 'Nuriyat Ilmi' are not assumed to be related to this student initiative.
+## Editing content
 
-## Updating the biography
-
-Data and all three language versions are in `lib/story.ts`, alongside the evidence and source links. Responsive components in `components/Archive.tsx`; layout and SEO in `app/[lang]/layout.tsx`.
-
-The old `lib/data.ts` and `components/Site.tsx` are superseded and no longer used.
+- \`lib/profile.ts\`: the full supplied biography, thematic facts and translations.
+- \`components/ProfileSite.tsx\`: the design, header-only internal navigation and page structure.
+- \`app/[lang]/template.tsx\`: route entrance animations.
+- \`app/[lang]/layout.tsx\`: localized metadata and structured \`ProfilePage\` markup.

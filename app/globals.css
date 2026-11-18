@@ -1,6 +1,14 @@
 @import "tailwindcss";
+
 :root { color-scheme: dark; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: #090b0b; }
-::selection { background: #a8895c; color: #111; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+body { margin:0; background:#0b100d; }
+::selection { background:#c1a16d; color:#0b100d; }
+@media (hover: hover) {
+ a,button { -webkit-tap-highlight-color:transparent; }
+ a:hover,button:hover { transition: color .22s ease, border-color .22s ease; }
+}
+@media (prefers-reduced-motion: reduce) {
+ *,*::before,*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; }
+ html { scroll-behavior:auto; }
+}
