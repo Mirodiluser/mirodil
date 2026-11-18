@@ -1,0 +1,6 @@
+@import "tailwindcss";
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #090b0b; }
+::selection { background: #a8895c; color: #111; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
