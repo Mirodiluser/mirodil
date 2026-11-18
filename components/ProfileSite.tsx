@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {useEffect,useState} from "react";
-import {motion,useReducedMotion,useScroll,useSpring} from "motion/react";
+import {motion,MotionConfig,useReducedMotion,useScroll,useSpring} from "motion/react";
 import {ArrowUpRight,ChevronDown,FileText,Globe2,Menu,X} from "lucide-react";
 import {locales,pages,profile,examRecords,sourceLinks,type Locale,type Page} from "@/lib/profile";
 
@@ -32,7 +32,7 @@ return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b
 <motion.span whileHover={{scale:1.04,rotate:-2}} transition={{type:"spring",stiffness:320,damping:20}} className="flex h-12 w-12 items-center justify-center border border-[#c8ac7e]/65 text-[23px] tracking-[-.12em] text-[#edd2a7]" style={serif}>MH<span className="text-[#a78351]">.</span></motion.span>
 <span className="hidden sm:flex flex-col gap-1.5"><strong className="text-[11px] tracking-[.16em] text-[#f0ecdf]">MIRODIL HAYITOV</strong><span className="text-[9px] tracking-[.23em] text-[#9a9e92]">{d.k}</span></span></Link>
 <nav className="hidden items-center gap-5 xl:gap-8 lg:flex" aria-label={d.navLabel}>
-{entries.map(([name,url],i)=>{const active=i===0?!section:section===pages[i-1];return <Link prefetch href={url} key={url} className={"relative py-7 text-[11px] tracking-[.04em] "+ring+(active?" text-[#ebd1a2]":" text-[#adb3a8] hover:text-[#ebd1a2]")}>
+{entries.map(([name,url],i)=>{const active=i===0?!section:section===pages[i-1];return <Link prefetch href={url} key={url} aria-current={active?"page":undefined} className={"relative py-7 text-[11px] tracking-[.04em] "+ring+(active?" text-[#ebd1a2]":" text-[#adb3a8] hover:text-[#ebd1a2]")}>
 <motion.span className="inline-block" whileHover={{y:-2}} whileTap={{scale:0.96}} transition={{type:"spring",stiffness:400,damping:24}}>{name}</motion.span>
 {active&&<motion.span layoutId="active-nav" transition={{type:"spring",stiffness:400,damping:32}} className="absolute bottom-4 left-0 right-0 h-px bg-[#c5a779]"/>}
 </Link>})}</nav>
@@ -110,8 +110,8 @@ return <><Chapter lang={lang} section="public-life" title={d.lifeTitle} subtitle
 export function ProfileSite({lang,page}:{lang:Locale;page?:Page}){
 const {scrollYProgress}=useScroll();
 const scaleX=useSpring(scrollYProgress,{stiffness:120,damping:27,restDelta:0.001});
-return <div className="relative min-h-screen overflow-x-clip bg-[#0b100d] text-[#f0ebdf]" style={{backgroundImage:"radial-gradient(ellipse at 85% 0%,rgba(141,110,67,.13),transparent 37%),radial-gradient(ellipse at 0% 67%,rgba(48,67,49,.13),transparent 48%)"}}>
+return <MotionConfig reducedMotion="user"><div className="relative min-h-screen overflow-x-clip bg-[#0b100d] text-[#f0ebdf]" style={{backgroundImage:"radial-gradient(ellipse at 85% 0%,rgba(141,110,67,.13),transparent 37%),radial-gradient(ellipse at 0% 67%,rgba(48,67,49,.13),transparent 48%)"}}>
 <motion.div style={{scaleX,transformOrigin:"0%"}} aria-hidden className="fixed left-0 right-0 top-0 z-[80] h-[2px] bg-[#d2b184]"/>
 <div aria-hidden className="pointer-events-none fixed inset-0 opacity-[.045]" style={{backgroundImage:"url(\"data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E\")"}}/>
-<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:<Activities lang={lang}/>}</main><Footer lang={lang}/></div>;
+<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:<Activities lang={lang}/>}</main><Footer lang={lang}/></div></MotionConfig>;
 }
