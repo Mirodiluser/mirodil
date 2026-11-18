@@ -1,16 +1,18 @@
-import {notFound} from "next/navigation";
 import type {Metadata} from "next";
-import {Archive} from "@/components/Archive";
-import {copy,languages,sections,type Language,type Section} from "@/lib/story";
-export function generateStaticParams(){return languages.flatMap(lang=>sections.map(section=>({lang,section})))}
+import {notFound} from "next/navigation";
+import {ProfileSite} from "@/components/ProfileSite";
+import {locales,pages,profile,type Locale,type Page} from "@/lib/profile";
+export function generateStaticParams(){return locales.flatMap(lang=>pages.map(section=>({lang,section})));}
 export async function generateMetadata({params}:{params:Promise<{lang:string;section:string}>}):Promise<Metadata>{
 const {lang,section}=await params;
-if(!languages.includes(lang as Language)||!sections.includes(section as Section))return {};
-const d=copy[lang as Language];const i=sections.indexOf(section as Section);
-return {title:d.nav[i],description:i===0?d.bioLead:i===1?d.academicLead:i===2?d.projectsLead:d.publicLead,alternates:{canonical:"/"+lang+"/"+section,languages:Object.fromEntries(languages.map(l=>[l,"/"+l+"/"+section]))}};
+if(!locales.includes(lang as Locale)||!pages.includes(section as Page))return {};
+const d=profile[lang as Locale];
+const i=pages.indexOf(section as Page);
+const description=[d.bioSubtitle,d.academicSubtitle,d.projectsSubtitle,d.lifeSubtitle][i];
+return {title:d.nav[i+1],description,alternates:{canonical:"/"+lang+"/"+section,languages:Object.fromEntries(locales.map(l=>[l,"/"+l+"/"+section]))}};
 }
-export default async function Page({params}:{params:Promise<{lang:string;section:string}>}){
+export default async function PageView({params}:{params:Promise<{lang:string;section:string}>}){
 const {lang,section}=await params;
-if(!languages.includes(lang as Language)||!sections.includes(section as Section))notFound();
-return <Archive lang={lang as Language} section={section as Section}/>;
+if(!locales.includes(lang as Locale)||!pages.includes(section as Page))notFound();
+return <ProfileSite lang={lang as Locale} page={section as Page}/>;
 }
