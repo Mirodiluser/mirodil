@@ -3,7 +3,7 @@ export type Locale = (typeof locales)[number];
 export const pages = ["biography", "academic", "projects", "public-life", "media"] as const;
 export type Page = (typeof pages)[number];
 
-type Project = { title: string; category: string; status: string; description: string; details: string[]; href?: string };
+type Project = { title: string; category: string; status: string; description: string; details: string[]; href?: string; website?: string };
 type Data = {
   nav: [string,string,string,string,string,string]; k: string; meta:string; homeOverline:string;
   heroLead:string; heroSub:string; introductionTitle:string; introductionText:string;
@@ -47,7 +47,7 @@ export const profile: Record<Locale, Data> = {
     pending:"Hujjat tasvirlari keyinroq qo‘shiladi.",
     projectsTitle:"Loyihalar va ishlanmalar",projectsSubtitle:"Yaratilgan texnologiyalar va davom etayotgan izlanishlar.",
     projects:[
-      {title:"TAHRIR AI",category:"SUN’IY INTELLEKT · TIL TEXNOLOGIYALARI",status:"Ishlab chiqilgan loyiha",description:"Hujjatlardagi imloviy xatolarni aniqlash va o‘zbek tilidagi matnlarni tahrirlashga mo‘ljallangan sun’iy intellekt platformasi.",details:["O‘zbek tilidagi matnlar bilan ishlash","DOCX hujjatlarini tekshirish","Ochiq frontend repozitoriyasi"],href:"https://github.com/Mirodiluser/frontend"},
+      {title:"TAHRIR AI",category:"SUN’IY INTELLEKT · TIL TEXNOLOGIYALARI",status:"Ishlab chiqilgan loyiha",description:"Hujjatlardagi imloviy xatolarni aniqlash va o‘zbek tilidagi matnlarni tahrirlashga mo‘ljallangan sun’iy intellekt platformasi.",details:["O‘zbek tilidagi matnlar bilan ishlash","DOCX hujjatlarini tekshirish","Ochiq frontend repozitoriyasi"],href:"https://github.com/Mirodiluser/frontend",website:"https://tahrirai.uz",website:"https://tahrirai.uz",website:"https://tahrirai.uz"},
       {title:"Boburnoma Parallel Korpusi",category:"O‘ZBEK TILI VA ADABIYOTI",status:"Ilmiy-texnologik izlanish",description:"O‘zbek tili va adabiyotini raqamlashtirish yo‘nalishidagi izlanish. Boburnoma asari va parallel matnlar bilan ishlashga doir konsepsiya.",details:["Matnlarni raqamli shaklda o‘rganish","Parallel korpus g‘oyasi","Izlanish jarayoni"]},
       {title:"UWED AI",category:"TA’LIM TEXNOLOGIYALARI",status:"Norasmiy prototip",description:"Akademik litsey uchun ishlab chiqilayotgan shaxsiy, norasmiy raqamli ta’lim konsepsiyasi. Litseyning rasmiy mahsuloti emas.",details:["Ta’limga qaratilgan foydalanuvchi muhiti","Ichki sinov bosqichi","Rasmiy tizimga ulanmagan"]},
     ],

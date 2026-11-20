@@ -7,6 +7,7 @@ import {ArrowUpRight,ChevronDown,FileText,Globe2,Menu,X} from "lucide-react";
 import {locales,pages,profile,sourceLinks,type Locale,type Page} from "@/lib/profile";
 import {CertificateShowcase} from "./CertificateShowcase";
 import {MediaPage} from "./MediaPage";
+import {EnglishAward,SportsAwards} from "./AwardsShowcase";
 
 const serif={fontFamily:"'Iowan Old Style', Baskerville, Georgia, serif"};
 const shell="mx-auto w-full max-w-[1500px] px-6 sm:px-10 lg:px-[76px]";
@@ -14,6 +15,11 @@ const muted="text-[#a3a89f]";
 const label="text-[10px] tracking-[.24em] uppercase font-medium text-[#c5a87c]";
 const ring="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d4b584]";
 const curve=[0.22,1,0.36,1] as const;
+const projectLinks={
+  uz:{website:"TAHRIR AI saytini ochish",code:"GitHub · dastur kodi"},
+  ru:{website:"Открыть платформу TAHRIR AI",code:"GitHub · исходный код"},
+  en:{website:"Visit TAHRIR AI platform",code:"GitHub · source code"}
+};
 
 function Eyebrow({children,index}:{children:React.ReactNode;index?:string}){
 return <div className="flex items-center gap-4"><span className="h-px w-8 bg-[#c2a47a]"/><span className={label}>{index?index+" / ":""}{children}</span></div>;
@@ -86,6 +92,7 @@ return <><Chapter lang={lang} section="academic" title={d.academicTitle} subtitl
 <section className={shell+" grid gap-14 py-24 lg:grid-cols-[.9fr_1fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>01 / SCHOOL</Eyebrow><h2 className="mt-10 text-[clamp(51px,5.7vw,83px)] leading-[1.08] tracking-[-.05em]" style={serif}>{d.schoolTitle}</h2></Reveal><Reveal delay={0.1} className="flex flex-col justify-center"><p className="max-w-xl text-[clamp(19px,2vw,26px)] leading-[1.9] text-[#bec4b8]">{d.schoolBody}</p></Reveal></section>
 <section className="border-y border-[#c6aa7d]/20 bg-[#141915]"><div className={shell+" grid items-center gap-14 py-24 md:grid-cols-[.8fr_1.2fr] lg:gap-24"}><Reveal><p className="text-[clamp(115px,17vw,240px)] leading-[.87] tracking-[-.10em] text-[#d5bd96]" style={serif}>142<span className="text-[#a38a62]">,7</span></p><span className={"mt-7 block "+label}>{d.admissionLabel}</span></Reveal><Reveal delay={0.1}><p className="max-w-[590px] border-l border-[#c6aa7d]/50 pl-8 text-[clamp(20px,2.1vw,28px)] leading-[1.8] text-[#c8ccbe]">{d.admissionBody}</p></Reveal></div></section>
 <CertificateShowcase lang={lang}/>
+<EnglishAward lang={lang}/>
 <div className={shell+" flex flex-wrap items-center justify-between gap-6 py-12"}><span className={label}>UWED · ACADEMIC LYCEUM</span><a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer" className={"group inline-flex items-center gap-3 text-[12px] text-[#e4c89b] hover:text-white "+ring}>{d.openSource}<motion.span whileHover={{x:3,y:-3}}><ArrowUpRight size={17}/></motion.span></a></div></>;
 }
 function Projects({lang}:{lang:Locale}){const d=profile[lang];
@@ -98,14 +105,18 @@ return <><Chapter lang={lang} section="projects" title={d.projectsTitle} subtitl
 <Reveal delay={0.1} className="flex flex-col justify-center"><p className="max-w-xl text-[clamp(21px,2.35vw,31px)] leading-[1.7] text-[#d9d8cc]">{item.description}</p>
 <div className="mt-10 border-t border-[#c6aa7d]/25">{item.details.map((fact,j)=><div key={j} className="grid grid-cols-[52px_1fr] gap-6 border-b border-[#c6aa7d]/20 py-5 text-[15px] text-[#aeb5a9]"><span className="text-[#c3a478]">0{j+1}</span>{fact}</div>)}</div>
 <p className="mt-9 text-[11px] tracking-[.16em] text-[#c9ab7e]">{item.status}</p>
-{item.href&&<motion.a whileHover={{x:4}} whileTap={{scale:0.98}} className={"mt-8 inline-flex w-fit items-center gap-3 border-b border-[#c6aa7d]/60 pb-2 text-[12px] text-[#e5cba0] "+ring} target="_blank" rel="noopener noreferrer" href={item.href}>{d.openSource}<ArrowUpRight size={16}/></motion.a>}
+<div className="mt-8 flex flex-wrap items-center gap-x-9 gap-y-6">
+{item.website&&<motion.a whileHover={{x:4}} whileTap={{scale:0.98}} className={"inline-flex w-fit items-center gap-3 border-b border-[#d6bc91]/65 pb-2 text-[12px] text-[#f1d5a5] "+ring} target="_blank" rel="noopener noreferrer" href={item.website}>{projectLinks[lang].website}<ArrowUpRight size={16}/></motion.a>}
+{item.href&&<motion.a whileHover={{x:4}} whileTap={{scale:0.98}} className={"inline-flex w-fit items-center gap-3 border-b border-[#c6aa7d]/50 pb-2 text-[12px] text-[#d2d2c1] "+ring} target="_blank" rel="noopener noreferrer" href={item.href}>{projectLinks[lang].code}<ArrowUpRight size={16}/></motion.a>}
+</div>
 </Reveal></article>)}</section></>;
 }
 function Activities({lang}:{lang:Locale}){const d=profile[lang];
 return <><Chapter lang={lang} section="public-life" title={d.lifeTitle} subtitle={d.lifeSubtitle}/>
 <section className={shell+" grid gap-14 py-24 lg:grid-cols-[.85fr_1.15fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>01 / SPORT</Eyebrow><h2 className="mt-10 text-[clamp(54px,5.9vw,88px)] leading-[1.06] tracking-[-.06em]" style={serif}>{d.sportsTitle}</h2></Reveal><Reveal delay={0.1} className="flex items-center"><p className="max-w-xl text-[clamp(20px,2.2vw,29px)] leading-[1.82] text-[#bfc6b8]">{d.sportsIntro}</p></Reveal></section>
 <section className="border-y border-[#c6aa7d]/20 bg-[#141915]"><div className={shell+" py-20"}><div className="grid border-y border-[#c6aa7d]/20 md:grid-cols-3">{d.sports.map((name,i)=><Reveal delay={i*.1} key={i} className={"py-12 md:px-9 "+(i>0?"border-t border-[#c6aa7d]/20 md:border-l md:border-t-0":"")}><span className={label}>0{i+1} / DISCIPLINE</span><p className="mt-10 text-[clamp(46px,4.8vw,67px)] leading-[1.1]" style={serif}>{name}</p></Reveal>)}</div><p className={"mt-7 max-w-xl text-[13px] leading-[1.8] "+muted}>{d.sportsNote}</p></div></section>
-<section className={shell+" grid gap-14 py-24 lg:grid-cols-[.85fr_1.15fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>02 / LEADERSHIP & INITIATIVES</Eyebrow><h2 className="mt-10 text-[clamp(70px,8.5vw,126px)] leading-[.9] tracking-[-.06em] text-[#e9dfce]" style={serif}>Nuriyat<br/><span className="italic text-[#c9ad83]">Ilmi.</span></h2></Reveal><Reveal delay={0.12} className="flex flex-col justify-center"><h3 className="text-[clamp(25px,2.7vw,38px)] text-[#e2dbc9]" style={serif}>{d.initiativeTitle}</h3><p className="mt-8 max-w-xl text-[18px] leading-[1.95] text-[#b7bfb0]">{d.initiativeBody}</p></Reveal></section></>;
+<SportsAwards lang={lang}/>
+<section className={shell+" grid gap-14 py-24 lg:grid-cols-[.85fr_1.15fr] lg:gap-24 lg:py-36"}><Reveal><Eyebrow>03 / LEADERSHIP & INITIATIVES</Eyebrow><h2 className="mt-10 text-[clamp(70px,8.5vw,126px)] leading-[.9] tracking-[-.06em] text-[#e9dfce]" style={serif}>Nuriyat<br/><span className="italic text-[#c9ad83]">Ilmi.</span></h2></Reveal><Reveal delay={0.12} className="flex flex-col justify-center"><h3 className="text-[clamp(25px,2.7vw,38px)] text-[#e2dbc9]" style={serif}>{d.initiativeTitle}</h3><p className="mt-8 max-w-xl text-[18px] leading-[1.95] text-[#b7bfb0]">{d.initiativeBody}</p></Reveal></section></>;
 }
 export function ProfileSite({lang,page}:{lang:Locale;page?:Page}){
 const {scrollYProgress}=useScroll();
