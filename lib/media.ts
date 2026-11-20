@@ -13,7 +13,7 @@ export const press:Record<Locale,MediaCopy>={
   uz:{
     title:"OAV va nashrlar",lead:"Televizion suhbatlar va yosh dasturchi haqidagi gazeta nashri.",
     issue:"28-oktabr, 2026 · №31 (16737)",issueLabel:"BOSMA NASHR / ARXIV",
-    television:"Televideniye",broadcastNote:"Suhbatlarning sanasi va asl video havolalari keyinroq qo‘shiladi.",
+    television:"Televideniye",broadcastNote:"O‘zbekiston 24 va Mahalla telekanali suhbatlaridan arxiv suratlari.",
     sourcesNote:"Televizion suhbatlardan arxiv lavhalari.",
     programs:[
       {overline:"01 / O‘ZBEKISTON 24",title:"O‘zbekiston 24",intro:"Televizion suhbatga taklif etilgan mehmon sifatida yosh dasturchi o‘z izlanishlari, sun’iy intellektga qiziqishi va kelgusidagi rejalari haqida fikr bildirgan.",image:"/media/interview-ozbekiston24.jpeg",alt:"O‘zbekiston 24 uchun intervyu yozib olinayotgan jarayon: kamera, suhbatdosh va noutbuk."},
@@ -25,7 +25,7 @@ export const press:Record<Locale,MediaCopy>={
   ru:{
     title:"СМИ и публикации",lead:"Телевизионные интервью и публикация о молодом разработчике в прессе.",
     issue:"28 октября 2026 · №31 (16737)",issueLabel:"ПЕЧАТНАЯ ПУБЛИКАЦИЯ / АРХИВ",
-    television:"Телевизионные интервью",broadcastNote:"Точные даты эфиров и оригинальные видеозаписи можно будет добавить позднее.",
+    television:"Телевизионные интервью",broadcastNote:"Архивные кадры интервью для O‘zbekiston 24 и Mahalla Telekanali.",
     sourcesNote:"Фотографии из архива телевизионных интервью.",
     programs:[
       {overline:"01 / O‘ZBEKISTON 24",title:"O‘zbekiston 24",intro:"В качестве приглашённого гостя Миродил рассказал о своём пути, разработках, интересе к искусственному интеллекту и целях. На фотографии — процесс записи интервью.",image:"/media/interview-ozbekiston24.jpeg",alt:"Съёмка интервью O‘zbekiston 24: видеокамера в переднем плане, интервьюируемый и собеседница за столом."},
@@ -37,7 +37,7 @@ export const press:Record<Locale,MediaCopy>={
   en:{
     title:"Media & press",lead:"Television conversations and a newspaper feature on a young developer.",
     issue:"28 October 2026 · Issue 31 (16737)",issueLabel:"PRINT FEATURE / ARCHIVE",
-    television:"Television interviews",broadcastNote:"Broadcast dates and original video links will be added when available.",
+    television:"Television interviews",broadcastNote:"Archive photographs from the O‘zbekiston 24 and Mahalla television interviews.",
     sourcesNote:"Photographs from the television interview archive.",
     programs:[
       {overline:"01 / O‘ZBEKISTON 24",title:"O‘zbekiston 24",intro:"Invited as a guest for a television conversation, Mirodil spoke about his development work, interest in artificial intelligence, and ambitions. The photo shows the interview recording.",image:"/media/interview-ozbekiston24.jpeg",alt:"Behind-the-scenes image from an O‘zbekiston 24 interview: television camera, interviewer and guest at a table."},
