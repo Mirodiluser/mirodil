@@ -39,8 +39,8 @@ return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b
 <div className={shell+" flex h-[84px] items-center justify-between gap-5"}>
 <Link href={"/"+lang} aria-label="Mirodil Hayitov" className={"flex min-w-0 items-center gap-4 "+ring}>
 <motion.span whileHover={{scale:1.04,rotate:-2}} transition={{type:"spring",stiffness:320,damping:20}} className="flex h-12 w-12 items-center justify-center border border-[#c8ac7e]/65 text-[23px] tracking-[-.12em] text-[#edd2a7]" style={serif}>MH<span className="text-[#a78351]">.</span></motion.span>
-<span className={section?"hidden sm:flex flex-col gap-1.5":"hidden"}><strong className="text-[11px] tracking-[.16em] text-[#f0ecdf]">MIRODIL HAYITOV</strong><span className="text-[9px] tracking-[.23em] text-[#9a9e92]">{d.k}</span></span></Link>
-<nav className={section?"hidden items-center gap-5 xl:gap-8 lg:flex":"hidden"} aria-label={d.navLabel}>
+<span className="hidden sm:flex flex-col gap-1.5"><strong className="text-[11px] tracking-[.16em] text-[#f0ecdf]">MIRODIL HAYITOV</strong><span className="text-[9px] tracking-[.23em] text-[#9a9e92]">{d.k}</span></span></Link>
+<nav className="hidden items-center gap-5 xl:gap-8 lg:flex" aria-label={d.navLabel}>
 {entries.map(([name,url],i)=>{const active=i===0?!section:section===pages[i-1];return <Link prefetch href={url} key={url} aria-current={active?"page":undefined} className={"relative py-7 text-[11px] tracking-[.04em] "+ring+(active?" text-[#ebd1a2]":" text-[#adb3a8] hover:text-[#ebd1a2]")}>
 <motion.span className="inline-block" whileHover={{y:-2}} whileTap={{scale:0.96}} transition={{type:"spring",stiffness:400,damping:24}}>{name}</motion.span>
 {active&&<motion.span layoutId="active-nav" transition={{type:"spring",stiffness:400,damping:32}} className="absolute bottom-4 left-0 right-0 h-px bg-[#c5a779]"/>}
@@ -49,13 +49,13 @@ return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b
 <div className="relative"><motion.button whileTap={{scale:0.95}} type="button" aria-label="Language" aria-expanded={languages} onClick={()=>setLanguages(!languages)} className={"flex h-10 items-center gap-2 border border-[#c6aa7d]/30 px-3 text-[11px] text-[#e5cba0] transition hover:border-[#c6aa7d]/70 "+ring}><Globe2 size={14}/>{lang.toUpperCase()}<ChevronDown size={12}/></motion.button>
 {languages&&<motion.div initial={{opacity:0,y:-7,scale:0.98}} animate={{opacity:1,y:0,scale:1}} transition={{duration:0.2}} className="absolute right-0 top-12 z-50 w-44 border border-[#c6aa7d]/30 bg-[#151b16] p-1.5 shadow-2xl">{locales.map(l=><Link className="block px-3 py-3 text-[12px] text-[#e7dfd0] transition-colors hover:bg-[#c6aa7d]/15" href={"/"+l+(section?"/"+section:"")} key={l}>{l==="uz"?"O‘zbekcha":l==="ru"?"Русский":"English"}</Link>)}</motion.div>}
 </div>
-{section&&<motion.button whileTap={{scale:0.92}} type="button" onClick={()=>setMobile(!mobile)} aria-label="Toggle navigation" aria-expanded={mobile} className={"flex h-10 w-10 items-center justify-center border border-[#c6aa7d]/30 text-[#e5cba0] lg:hidden "+ring}>{mobile?<X size={18}/>:<Menu size={18}/>}</motion.button>}</div></div>
-{section&&mobile&&<motion.nav initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} className={shell+" grid overflow-hidden border-t border-[#c6aa7d]/20 bg-[#0d130e] py-4 lg:hidden"}>{entries.map(([name,url],i)=><Link className={"border-b border-[#c6aa7d]/15 py-4 text-[15px] "+(i===0&&!section||pages[i-1]===section?"text-[#e7ca9c]":"text-[#d2d3c7]")} key={url} href={url}>{name}</Link>)}</motion.nav>}
+{<motion.button whileTap={{scale:0.92}} type="button" onClick={()=>setMobile(!mobile)} aria-label="Toggle navigation" aria-expanded={mobile} className={"flex h-10 w-10 items-center justify-center border border-[#c6aa7d]/30 text-[#e5cba0] lg:hidden "+ring}>{mobile?<X size={18}/>:<Menu size={18}/>}</motion.button>}</div></div>
+{mobile&&<motion.nav initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} className={shell+" grid overflow-hidden border-t border-[#c6aa7d]/20 bg-[#0d130e] py-4 lg:hidden"}>{entries.map(([name,url],i)=><Link className={"border-b border-[#c6aa7d]/15 py-4 text-[15px] "+(i===0&&!section||pages[i-1]===section?"text-[#e7ca9c]":"text-[#d2d3c7]")} key={url} href={url}>{name}</Link>)}</motion.nav>}
 </header>;
 }
 function Footer({lang,home}:{lang:Locale;home:boolean}){
 const d=profile[lang];
-if(home)return <footer className="border-t border-[#c6aa7d]/20 bg-[#080b09]"><div className={shell+" flex min-h-[174px] items-center"}>
+return <footer className="border-t border-[#c6aa7d]/20 bg-[#080b09]"><div className={shell+" flex min-h-[174px] items-center"}>
 <span className="block text-[49px] italic tracking-[-.1em] text-[#c7ac81]" style={serif}>MH.</span>
 </div></footer>;
 return <footer className="border-t border-[#c6aa7d]/20 bg-[#080b09]"><div className={shell+" flex flex-wrap items-end justify-between gap-12 py-14"}>
