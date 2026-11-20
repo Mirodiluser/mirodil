@@ -47,7 +47,7 @@ export const profile: Record<Locale, Data> = {
     pending:"Hujjat tasvirlari keyinroq qo‘shiladi.",
     projectsTitle:"Loyihalar va ishlanmalar",projectsSubtitle:"Yaratilgan texnologiyalar va davom etayotgan izlanishlar.",
     projects:[
-      {title:"TAHRIR AI",category:"SUN’IY INTELLEKT · TIL TEXNOLOGIYALARI",status:"Ishlab chiqilgan loyiha",description:"Hujjatlardagi imloviy xatolarni aniqlash va o‘zbek tilidagi matnlarni tahrirlashga mo‘ljallangan sun’iy intellekt platformasi.",details:["O‘zbek tilidagi matnlar bilan ishlash","DOCX hujjatlarini tekshirish","Ochiq frontend repozitoriyasi"],href:"https://github.com/Mirodiluser/frontend",website:"https://tahrirai.uz",website:"https://tahrirai.uz",website:"https://tahrirai.uz"},
+      {title:"TAHRIR AI",category:"SUN’IY INTELLEKT · TIL TEXNOLOGIYALARI",status:"Ishlab chiqilgan loyiha",description:"Hujjatlardagi imloviy xatolarni aniqlash va o‘zbek tilidagi matnlarni tahrirlashga mo‘ljallangan sun’iy intellekt platformasi.",details:["O‘zbek tilidagi matnlar bilan ishlash","DOCX hujjatlarini tekshirish","Ochiq frontend repozitoriyasi"],href:"https://github.com/Mirodiluser/frontend",website:"https://tahrirai.uz"},
       {title:"Boburnoma Parallel Korpusi",category:"O‘ZBEK TILI VA ADABIYOTI",status:"Ilmiy-texnologik izlanish",description:"O‘zbek tili va adabiyotini raqamlashtirish yo‘nalishidagi izlanish. Boburnoma asari va parallel matnlar bilan ishlashga doir konsepsiya.",details:["Matnlarni raqamli shaklda o‘rganish","Parallel korpus g‘oyasi","Izlanish jarayoni"]},
       {title:"UWED AI",category:"TA’LIM TEXNOLOGIYALARI",status:"Norasmiy prototip",description:"Akademik litsey uchun ishlab chiqilayotgan shaxsiy, norasmiy raqamli ta’lim konsepsiyasi. Litseyning rasmiy mahsuloti emas.",details:["Ta’limga qaratilgan foydalanuvchi muhiti","Ichki sinov bosqichi","Rasmiy tizimga ulanmagan"]},
     ],
@@ -86,7 +86,7 @@ export const profile: Record<Locale, Data> = {
     pending:"Изображения сертификатов пока не опубликованы.",
     projectsTitle:"Проекты и разработки",projectsSubtitle:"Программные решения и продолжающиеся исследования.",
     projects:[
-      {title:"TAHRIR AI",category:"ИИ · ЯЗЫКОВЫЕ ТЕХНОЛОГИИ",status:"Разработка",description:"Платформа на основе искусственного интеллекта для поиска орфографических ошибок в документах и редактирования текстов на узбекском языке.",details:["Работа с текстами на узбекском языке","Проверка DOCX-документов","Публичный GitHub-репозиторий фронтенда"],href:"https://github.com/Mirodiluser/frontend"},
+      {title:"TAHRIR AI",category:"ИИ · ЯЗЫКОВЫЕ ТЕХНОЛОГИИ",status:"Разработка",description:"Платформа на основе искусственного интеллекта для поиска орфографических ошибок в документах и редактирования текстов на узбекском языке.",details:["Работа с текстами на узбекском языке","Проверка DOCX-документов","Публичный GitHub-репозиторий фронтенда"],href:"https://github.com/Mirodiluser/frontend",website:"https://tahrirai.uz"},
       {title:"Boburnoma Parallel Korpusi",category:"УЗБЕКСКИЙ ЯЗЫК И ЛИТЕРАТУРА",status:"Исследовательский проект",description:"Исследование цифровизации узбекского языка и литературы, включая идею параллельного корпуса текстов, связанных с «Бабур-наме».",details:["Цифровизация литературных текстов","Концепция параллельного корпуса","Исследовательская стадия"]},
       {title:"UWED AI",category:"ОБРАЗОВАТЕЛЬНЫЕ ТЕХНОЛОГИИ",status:"Неофициальный прототип",description:"Личный экспериментальный проект образовательной цифровой среды для лицея. Не является официальной платформой UWED.",details:["Образовательный интерфейс","Закрытое тестирование","Без доступа к официальным данным лицея"]},
     ],
@@ -125,7 +125,7 @@ export const profile: Record<Locale, Data> = {
     pending:"Certificate scans are not yet available.",
     projectsTitle:"Projects & development",projectsSubtitle:"Digital products and ongoing research.",
     projects:[
-      {title:"TAHRIR AI",category:"ARTIFICIAL INTELLIGENCE · LANGUAGE",status:"Developed project",description:"An AI-powered platform for identifying spelling mistakes in documents and assisting with the editing of Uzbek-language texts.",details:["Uzbek-language writing tools","DOCX document processing","Public frontend repository"],href:"https://github.com/Mirodiluser/frontend"},
+      {title:"TAHRIR AI",category:"ARTIFICIAL INTELLIGENCE · LANGUAGE",status:"Developed project",description:"An AI-powered platform for identifying spelling mistakes in documents and assisting with the editing of Uzbek-language texts.",details:["Uzbek-language writing tools","DOCX document processing","Public frontend repository"],href:"https://github.com/Mirodiluser/frontend",website:"https://tahrirai.uz"},
       {title:"Boburnoma Parallel Korpusi",category:"UZBEK LANGUAGE & LITERATURE",status:"Research exploration",description:"An exploration of digitizing Uzbek literature, including the concept of a parallel text corpus connected with the Baburnama.",details:["Literary text digitization","Parallel corpus concept","Exploratory stage"]},
       {title:"UWED AI",category:"EDUCATION TECHNOLOGY",status:"Unofficial prototype",description:"A privately developed experimental concept for a digital student environment. It is not an official UWED product.",details:["Learning-focused interface","Private prototype","No access to official school records"]},
     ],
