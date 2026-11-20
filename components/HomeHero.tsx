@@ -35,7 +35,7 @@ export function HomeHero({ lang }: { lang: Locale }) {
 
       {/* Size is based on the available viewport, rather than a fixed 800px height.
           Every link remains visible above the fold at typical mobile and desktop heights. */}
-      <div className="relative mx-auto flex min-h-[calc(100svh-84px)] w-full max-w-[1500px] flex-col justify-between px-5 pb-5 pt-6 sm:px-10 sm:pb-7 sm:pt-8 lg:px-[76px] lg:pb-9 lg:pt-10">
+      <div className="home-hero-viewport relative mx-auto flex min-h-[calc(100svh-84px)] w-full max-w-[1500px] flex-col justify-between px-5 pb-5 pt-6 sm:px-10 sm:pb-7 sm:pt-8 lg:px-[76px] lg:pb-9 lg:pt-10">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,14 +46,14 @@ export function HomeHero({ lang }: { lang: Locale }) {
           <span>{data.homeOverline}</span>
         </motion.div>
 
-        <div className="relative z-10 grid min-w-0 flex-1 grid-cols-1 content-center items-center gap-x-9 gap-y-8 py-7 md:grid-cols-[minmax(0,1.03fr)_minmax(310px,.97fr)] md:gap-y-0 lg:gap-x-12 lg:py-10 xl:gap-x-16">
+        <div className="home-hero-center relative z-10 grid min-w-0 flex-1 grid-cols-1 content-center items-center gap-x-9 gap-y-8 py-7 md:grid-cols-[minmax(0,1.03fr)_minmax(310px,.97fr)] md:gap-y-0 lg:gap-x-12 lg:py-10 xl:gap-x-16">
           <div className="relative min-w-0 self-center">
             <motion.h1
               initial={reduceMotion ? false : { opacity: 0, y: 34, filter: "blur(13px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.06, delay: 0.16, ease }}
               style={serif}
-              className="relative z-10 text-[clamp(63px,12vw,102px)] leading-[.82] tracking-[-.085em] sm:text-[clamp(75px,10vw,115px)] md:text-[clamp(74px,8.1vw,136px)] lg:text-[clamp(91px,8.25vw,141px)]"
+              className="home-hero-name relative z-10 text-[clamp(63px,12vw,102px)] leading-[.82] tracking-[-.085em] sm:text-[clamp(75px,10vw,115px)] md:text-[clamp(74px,8.1vw,136px)] lg:text-[clamp(91px,8.25vw,141px)]"
             >
               <span className="block whitespace-nowrap text-[#f3eedf]">Mirodil</span>
               <span className="mt-[.09em] block whitespace-nowrap italic text-[#d1b790]">
@@ -62,7 +62,7 @@ export function HomeHero({ lang }: { lang: Locale }) {
             </motion.h1>
             <motion.span
               aria-hidden="true"
-              className="mt-8 block h-px w-[min(58%,270px)] origin-left bg-gradient-to-r from-[#d0b182]/70 via-[#c6a779]/30 to-transparent md:mt-12"
+              className="home-hero-underline mt-8 block h-px w-[min(58%,270px)] origin-left bg-gradient-to-r from-[#d0b182]/70 via-[#c6a779]/30 to-transparent md:mt-12"
               initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ delay: 0.91, duration: 1.05, ease }}
@@ -73,7 +73,7 @@ export function HomeHero({ lang }: { lang: Locale }) {
             aria-label={lang === "ru" ? "Разделы персонального сайта" : lang === "uz" ? "Shaxsiy sayt bo‘limlari" : "Personal site sections"}
             className="relative z-10 w-full min-w-0 max-w-[550px] justify-self-end"
           >
-            <div className="grid gap-[6px] sm:gap-2">
+            <div className="home-hero-links grid gap-[6px] sm:gap-2">
               {pages.map((page, index) => (
                 <motion.div
                   key={page}
@@ -90,7 +90,7 @@ export function HomeHero({ lang }: { lang: Locale }) {
                     <Link
                       href={"/" + lang + "/" + page}
                       prefetch
-                      className="group relative flex min-h-[51px] w-full items-center gap-3 overflow-hidden border border-[#c7ac81]/[.29] bg-gradient-to-r from-[#1f251e]/[.91] via-[#181d18]/[.87] to-[#101611]/[.82] px-3.5 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,.13)] backdrop-blur-xl outline-offset-[3px] transition-[border-color,background-color,box-shadow] duration-500 hover:border-[#e4c799]/75 hover:shadow-[0_0_0_1px_rgba(221,183,123,.17),0_16px_48px_rgba(0,0,0,.31),0_0_45px_rgba(181,132,70,.13)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#e1c494] sm:min-h-[58px] sm:gap-4 sm:px-5 md:min-h-[64px] lg:min-h-[65px]"
+                      className="home-hero-link group relative flex min-h-[51px] w-full items-center gap-3 overflow-hidden border border-[#c7ac81]/[.29] bg-gradient-to-r from-[#1f251e]/[.91] via-[#181d18]/[.87] to-[#101611]/[.82] px-3.5 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,.13)] backdrop-blur-xl outline-offset-[3px] transition-[border-color,background-color,box-shadow] duration-500 hover:border-[#e4c799]/75 hover:shadow-[0_0_0_1px_rgba(221,183,123,.17),0_16px_48px_rgba(0,0,0,.31),0_0_45px_rgba(181,132,70,.13)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#e1c494] sm:min-h-[58px] sm:gap-4 sm:px-5 md:min-h-[64px] lg:min-h-[65px]"
                     >
                       {/* Layered glints make a rich reaction without affecting the layout. */}
                       <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_82%_45%,rgba(214,173,107,.17),transparent_66%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
@@ -117,7 +117,7 @@ export function HomeHero({ lang }: { lang: Locale }) {
           </nav>
         </div>
 
-        <div className="relative z-10 flex items-center justify-between gap-5 border-t border-[#c5a77d]/[.20] pt-3 text-[9px] tracking-[.17em] text-[#998e7a] sm:pt-4 sm:text-[10px]">
+        <div className="home-hero-bottom relative z-10 flex items-center justify-between gap-5 border-t border-[#c5a77d]/[.20] pt-3 text-[9px] tracking-[.17em] text-[#998e7a] sm:pt-4 sm:text-[10px]">
           <span>{data.city}</span>
           <span>{data.year}</span>
         </div>
