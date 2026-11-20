@@ -33,12 +33,12 @@ export const awards:Record<Locale,Copy>={
     sportKicker:"SPORT / DOCUMENTED RESULTS",
     sportHeading:"Результаты соревнований.",
     sportIntro:"Спортивные достижения представлены отдельно от основной биографии, с оригинальными фотографиями наград и краткими архивными подписями.",
-    documentationNote:"Фотографии и данные предоставлены владельцем сайта. Часть реквизитов на документах скрыта; независимая проверка наград не проводилась.",
+    documentationNote:"Некоторые реквизиты на изображениях наград закрыты для конфиденциальности.",
     viewImage:"Посмотреть награду",awardType:"АРХИВНАЯ НАГРАДА",
     english:{
       id:"english",title:"The Best English School 2026",result:"III",level:"3-е место · районный этап · Юнусабад, Ташкент",
       date:"21 мая 2026",summary:"Сертификат достижения за 3-е место на районном этапе конкурса по английскому языку «The Best English School 2026».",
-      footnote:"Сведения приведены по предоставленному сертификату.",
+      footnote:"Сертификат «The Best English School 2026».",
       image:imagePaths.english,alt:"Сертификат The Best English School 2026: 3-е место на районном этапе, вручён Миродилу Хайитову.",
       accent:"sapphire"
     },
@@ -53,7 +53,7 @@ export const awards:Record<Locale,Copy>={
       {
         id:"boxing",title:"Бокс",result:"III",level:"3-е место · первенство Ташкента",date:"2025 · Ташкент",
         summary:"Награда за 3-е место в соревновании по боксу, проведённом в рамках первенства города Ташкента.",
-        footnote:"Название организатора на предоставленном изображении частично скрыто.",
+        footnote:"Часть сведений об организаторе скрыта на фотографии.",
         image:imagePaths.boxing,alt:"Диплом по боксу: III место на городском первенстве Ташкента в 2025 году.",
         accent:"copper"
       }
@@ -66,7 +66,7 @@ export const awards:Record<Locale,Copy>={
     sportKicker:"SPORT / HUJJATLAR",
     sportHeading:"Musobaqa natijalari.",
     sportIntro:"Sport yutuqlari asosiy tarjimai holdan alohida, mukofot suratlari va izohlar bilan taqdim etiladi.",
-    documentationNote:"Suratlar va ma’lumotlar sayt egasi tomonidan taqdim etilgan. Hujjatlardagi ayrim rekvizitlar yashirilgan, mustaqil tasdiqlash amalga oshirilmagan.",
+    documentationNote:"Hujjatlardagi ayrim ma’lumotlar maxfiylik uchun yashirilgan.",
     viewImage:"Hujjatni ko‘rish",awardType:"ARXIV MUKOFOTI",
     english:{
       id:"english",title:"The Best English School 2026",result:"III",level:"3-o‘rin · tuman bosqichi · Yunusobod, Toshkent",
@@ -99,12 +99,12 @@ export const awards:Record<Locale,Copy>={
     sportKicker:"SPORT / AWARD RECORDS",
     sportHeading:"Competition results.",
     sportIntro:"Sporting achievements are displayed separately from the principal biography, with photographs and precise archival descriptions.",
-    documentationNote:"Images and information are subject-provided. Some document details have been concealed; the awards have not been independently authenticated.",
+    documentationNote:"Some document details are concealed for privacy.",
     viewImage:"View award",awardType:"ARCHIVE AWARD",
     english:{
       id:"english",title:"The Best English School 2026",result:"III",level:"3rd place · district level · Yunusabad, Tashkent",
       date:"21 May 2026",summary:"Certificate of achievement for third place at the district-level English-language competition, The Best English School 2026.",
-      footnote:"Details are taken from the certificate supplied by the subject.",
+      footnote:"The Best English School 2026 achievement certificate.",
       image:imagePaths.english,alt:"The Best English School 2026 certificate showing third place at district level.",
       accent:"sapphire"
     },

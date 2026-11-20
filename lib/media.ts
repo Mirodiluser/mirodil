@@ -14,7 +14,7 @@ export const press:Record<Locale,MediaCopy>={
     title:"OAV va nashrlar",lead:"Televizion suhbatlar va yosh dasturchi haqidagi gazeta nashri.",
     issue:"28-oktabr, 2026 · №31 (16737)",issueLabel:"BOSMA NASHR / ARXIV",
     television:"Televideniye",broadcastNote:"Suhbatlarning sanasi va asl video havolalari keyinroq qo‘shiladi.",
-    sourcesNote:"Suratlar shaxsiy arxivdan olingan. Efirga oid tafsilotlar sayt egasi tomonidan taqdim etilgan.",
+    sourcesNote:"Televizion suhbatlardan arxiv lavhalari.",
     programs:[
       {overline:"01 / O‘ZBEKISTON 24",title:"O‘zbekiston 24",intro:"Televizion suhbatga taklif etilgan mehmon sifatida yosh dasturchi o‘z izlanishlari, sun’iy intellektga qiziqishi va kelgusidagi rejalari haqida fikr bildirgan.",image:"/media/interview-ozbekiston24.jpeg",alt:"O‘zbekiston 24 uchun intervyu yozib olinayotgan jarayon: kamera, suhbatdosh va noutbuk."},
       {overline:"02 / MAHALLA",title:"Mahalla telekanali",intro:"Mahalla telekanalidagi suhbatda dasturlash, o‘z ustida ishlash, shaxsiy maqsadlar va tengdoshlariga tavsiyalar mavzulari muhokama qilingan.",image:"/media/interview-mahalla.jpg",alt:"Mahalla telekanali studiyasida ikki suhbatdosh qatnashgan teleintervyu kadri."},
@@ -26,7 +26,7 @@ export const press:Record<Locale,MediaCopy>={
     title:"СМИ и публикации",lead:"Телевизионные интервью и публикация о молодом разработчике в прессе.",
     issue:"28 октября 2026 · №31 (16737)",issueLabel:"ПЕЧАТНАЯ ПУБЛИКАЦИЯ / АРХИВ",
     television:"Телевизионные интервью",broadcastNote:"Точные даты эфиров и оригинальные видеозаписи можно будет добавить позднее.",
-    sourcesNote:"Фотографии предоставлены из личного архива; сведения об участии в передачах сообщил владелец сайта.",
+    sourcesNote:"Фотографии из архива телевизионных интервью.",
     programs:[
       {overline:"01 / O‘ZBEKISTON 24",title:"O‘zbekiston 24",intro:"В качестве приглашённого гостя Миродил рассказал о своём пути, разработках, интересе к искусственному интеллекту и целях. На фотографии — процесс записи интервью.",image:"/media/interview-ozbekiston24.jpeg",alt:"Съёмка интервью O‘zbekiston 24: видеокамера в переднем плане, интервьюируемый и собеседница за столом."},
       {overline:"02 / MAHALLA",title:"Mahalla Telekanali",intro:"В телевизионной беседе Миродил поделился опытом молодого разработчика, своими планами и советами тем, кто хочет развиваться в технологиях.",image:"/media/interview-mahalla.jpg",alt:"Кадр беседы в студии телеканала Mahalla с двумя участниками."}
@@ -38,7 +38,7 @@ export const press:Record<Locale,MediaCopy>={
     title:"Media & press",lead:"Television conversations and a newspaper feature on a young developer.",
     issue:"28 October 2026 · Issue 31 (16737)",issueLabel:"PRINT FEATURE / ARCHIVE",
     television:"Television interviews",broadcastNote:"Broadcast dates and original video links will be added when available.",
-    sourcesNote:"Images are from the subject's personal archive; the descriptions of participation are subject-provided.",
+    sourcesNote:"Photographs from the television interview archive.",
     programs:[
       {overline:"01 / O‘ZBEKISTON 24",title:"O‘zbekiston 24",intro:"Invited as a guest for a television conversation, Mirodil spoke about his development work, interest in artificial intelligence, and ambitions. The photo shows the interview recording.",image:"/media/interview-ozbekiston24.jpeg",alt:"Behind-the-scenes image from an O‘zbekiston 24 interview: television camera, interviewer and guest at a table."},
       {overline:"02 / MAHALLA",title:"Mahalla TV",intro:"During a television interview, Mirodil discussed his experience as a young developer, future plans, and advice for others interested in technology.",image:"/media/interview-mahalla.jpg",alt:"Studio conversation on Mahalla television, with the two guests seated opposite one another."}
