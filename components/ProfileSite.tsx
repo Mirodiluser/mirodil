@@ -7,6 +7,7 @@ import {ArrowUpRight,ChevronDown,FileText,Globe2,Menu,X} from "lucide-react";
 import {locales,pages,profile,sourceLinks,type Locale,type Page} from "@/lib/profile";
 import {CertificateShowcase} from "./CertificateShowcase";
 import {MediaPage} from "./MediaPage";
+import {HomeHero} from "./HomeHero";
 import {EnglishAward,SportsAwards} from "./AwardsShowcase";
 
 const serif={fontFamily:"'Iowan Old Style', Baskerville, Georgia, serif"};
@@ -38,8 +39,8 @@ return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b
 <div className={shell+" flex h-[84px] items-center justify-between gap-5"}>
 <Link href={"/"+lang} aria-label="Mirodil Hayitov" className={"flex min-w-0 items-center gap-4 "+ring}>
 <motion.span whileHover={{scale:1.04,rotate:-2}} transition={{type:"spring",stiffness:320,damping:20}} className="flex h-12 w-12 items-center justify-center border border-[#c8ac7e]/65 text-[23px] tracking-[-.12em] text-[#edd2a7]" style={serif}>MH<span className="text-[#a78351]">.</span></motion.span>
-<span className="hidden sm:flex flex-col gap-1.5"><strong className="text-[11px] tracking-[.16em] text-[#f0ecdf]">MIRODIL HAYITOV</strong><span className="text-[9px] tracking-[.23em] text-[#9a9e92]">{d.k}</span></span></Link>
-<nav className="hidden items-center gap-5 xl:gap-8 lg:flex" aria-label={d.navLabel}>
+<span className={section?"hidden sm:flex flex-col gap-1.5":"hidden"}><strong className="text-[11px] tracking-[.16em] text-[#f0ecdf]">MIRODIL HAYITOV</strong><span className="text-[9px] tracking-[.23em] text-[#9a9e92]">{d.k}</span></span></Link>
+<nav className={section?"hidden items-center gap-5 xl:gap-8 lg:flex":"hidden"} aria-label={d.navLabel}>
 {entries.map(([name,url],i)=>{const active=i===0?!section:section===pages[i-1];return <Link prefetch href={url} key={url} aria-current={active?"page":undefined} className={"relative py-7 text-[11px] tracking-[.04em] "+ring+(active?" text-[#ebd1a2]":" text-[#adb3a8] hover:text-[#ebd1a2]")}>
 <motion.span className="inline-block" whileHover={{y:-2}} whileTap={{scale:0.96}} transition={{type:"spring",stiffness:400,damping:24}}>{name}</motion.span>
 {active&&<motion.span layoutId="active-nav" transition={{type:"spring",stiffness:400,damping:32}} className="absolute bottom-4 left-0 right-0 h-px bg-[#c5a779]"/>}
@@ -48,32 +49,20 @@ return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b
 <div className="relative"><motion.button whileTap={{scale:0.95}} type="button" aria-label="Language" aria-expanded={languages} onClick={()=>setLanguages(!languages)} className={"flex h-10 items-center gap-2 border border-[#c6aa7d]/30 px-3 text-[11px] text-[#e5cba0] transition hover:border-[#c6aa7d]/70 "+ring}><Globe2 size={14}/>{lang.toUpperCase()}<ChevronDown size={12}/></motion.button>
 {languages&&<motion.div initial={{opacity:0,y:-7,scale:0.98}} animate={{opacity:1,y:0,scale:1}} transition={{duration:0.2}} className="absolute right-0 top-12 z-50 w-44 border border-[#c6aa7d]/30 bg-[#151b16] p-1.5 shadow-2xl">{locales.map(l=><Link className="block px-3 py-3 text-[12px] text-[#e7dfd0] transition-colors hover:bg-[#c6aa7d]/15" href={"/"+l+(section?"/"+section:"")} key={l}>{l==="uz"?"O‘zbekcha":l==="ru"?"Русский":"English"}</Link>)}</motion.div>}
 </div>
-<motion.button whileTap={{scale:0.92}} type="button" onClick={()=>setMobile(!mobile)} aria-label="Toggle navigation" aria-expanded={mobile} className={"flex h-10 w-10 items-center justify-center border border-[#c6aa7d]/30 text-[#e5cba0] lg:hidden "+ring}>{mobile?<X size={18}/>:<Menu size={18}/>}</motion.button></div></div>
-{mobile&&<motion.nav initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} className={shell+" grid overflow-hidden border-t border-[#c6aa7d]/20 bg-[#0d130e] py-4 lg:hidden"}>{entries.map(([name,url],i)=><Link className={"border-b border-[#c6aa7d]/15 py-4 text-[15px] "+(i===0&&!section||pages[i-1]===section?"text-[#e7ca9c]":"text-[#d2d3c7]")} key={url} href={url}>{name}</Link>)}</motion.nav>}
+{section&&<motion.button whileTap={{scale:0.92}} type="button" onClick={()=>setMobile(!mobile)} aria-label="Toggle navigation" aria-expanded={mobile} className={"flex h-10 w-10 items-center justify-center border border-[#c6aa7d]/30 text-[#e5cba0] lg:hidden "+ring}>{mobile?<X size={18}/>:<Menu size={18}/>}</motion.button>}</div></div>
+{section&&mobile&&<motion.nav initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} className={shell+" grid overflow-hidden border-t border-[#c6aa7d]/20 bg-[#0d130e] py-4 lg:hidden"}>{entries.map(([name,url],i)=><Link className={"border-b border-[#c6aa7d]/15 py-4 text-[15px] "+(i===0&&!section||pages[i-1]===section?"text-[#e7ca9c]":"text-[#d2d3c7]")} key={url} href={url}>{name}</Link>)}</motion.nav>}
 </header>;
 }
-function Footer({lang}:{lang:Locale}){
+function Footer({lang,home}:{lang:Locale;home:boolean}){
 const d=profile[lang];
+if(home)return <footer className="border-t border-[#c6aa7d]/20 bg-[#080b09]"><div className={shell+" flex min-h-[174px] items-center"}>
+<span className="block text-[49px] italic tracking-[-.1em] text-[#c7ac81]" style={serif}>MH.</span>
+</div></footer>;
 return <footer className="border-t border-[#c6aa7d]/20 bg-[#080b09]"><div className={shell+" flex flex-wrap items-end justify-between gap-12 py-14"}>
 <div><span className="block text-[47px] italic tracking-[-.1em] text-[#c7ac81]" style={serif}>MH.</span><p className="mt-4 text-[23px]" style={serif}>Mirodil Hayitov</p><p className={"mt-3 max-w-md text-[12px] leading-[1.9] "+muted}>{d.homeClosing}</p></div>
 <div className="text-[10px] tracking-[.17em] text-[#8f988c]">© 2026 MIRODIL HAYITOV <span className="mx-3 text-[#947e5e]">/</span> {d.k}</div></div></footer>;
 }
-function Opening({lang}:{lang:Locale}){
-const d=profile[lang];const reduce=useReducedMotion();
-return <><section className="relative min-h-[780px] overflow-hidden border-b border-[#c6aa7d]/20 lg:min-h-[900px]">
-<div aria-hidden className="pointer-events-none absolute -right-[38vw] -top-[6vw] h-[115vw] max-h-[1100px] w-[115vw] max-w-[1100px] rounded-full border border-[#c6aa7d]/10 sm:-right-[15vw]">
-<motion.div animate={reduce?{}:{rotate:360}} transition={{duration:95,repeat:Infinity,ease:"linear"}} className="absolute inset-[10%] rounded-full border border-dashed border-[#c6aa7d]/20"/>
-<div className="absolute inset-[23%] rounded-full border border-[#c6aa7d]/20"/><div className="absolute inset-[35%] rounded-full border border-[#c6aa7d]/10"/>
-<span className="absolute left-[28%] top-[24%] -rotate-12 text-[clamp(130px,25vw,355px)] italic text-[#d6b17b]/[.065]" style={serif}>M</span></div>
-<div className={shell+" relative flex min-h-[780px] flex-col justify-between pb-11 pt-20 sm:pt-28 lg:min-h-[900px]"}><div>
-<Reveal><Eyebrow>{d.homeOverline}</Eyebrow></Reveal>
-<motion.h1 initial={reduce?false:{opacity:0,y:50,filter:"blur(12px)"}} animate={{opacity:1,y:0,filter:"blur(0px)"}} transition={{duration:1.25,ease:curve}} className="mt-20 max-w-[1200px] text-[clamp(82px,12.5vw,190px)] leading-[.78] tracking-[-.09em]" style={serif}>
-<span className="block text-[#f3eedf]">Mirodil</span><span className="mt-5 block italic text-[#d1b790]">Hayitov<span className="text-[#a98857]">.</span></span></motion.h1>
-<Reveal delay={0.25} className="mt-20 grid max-w-[1080px] gap-10 lg:grid-cols-[.9fr_1fr] lg:gap-20"><p className="text-[clamp(25px,2.65vw,38px)] leading-[1.35] tracking-[-.03em] text-[#e7dfd1]" style={serif}>{d.heroLead}</p><div className="flex items-center border-l border-[#c7aa7d]/60 pl-7"><p className="max-w-[480px] text-[15px] leading-[2] text-[#aeb4a8]">{d.heroSub}</p></div></Reveal>
-</div><div className="mt-16 flex justify-between gap-5 border-t border-[#c6aa7d]/25 pt-6 text-[10px] tracking-[.2em] text-[#b5a07f]"><span>{d.city}</span><span>{d.year} ↓</span></div></div></section>
-<section className={shell+" grid gap-12 py-28 lg:grid-cols-[.7fr_1fr] lg:gap-24 lg:py-44"}><Reveal><Eyebrow>01 / EDITORIAL</Eyebrow><h2 className="mt-10 max-w-[560px] text-[clamp(54px,6vw,94px)] leading-[1.02] tracking-[-.065em]" style={serif}>{d.introductionTitle}</h2></Reveal><Reveal delay={0.12} className="flex flex-col justify-center"><p className="max-w-2xl text-[clamp(20px,2.3vw,30px)] leading-[1.85] text-[#c0c5b9]">{d.introductionText}</p><p className="mt-12 border-t border-[#c6aa7d]/30 pt-8 text-[12px] leading-[1.9] tracking-[.04em] text-[#a9ac9e]">{d.homeClosing}</p></Reveal></section>
-<section className="border-t border-[#c6aa7d]/20 bg-[#141915]"><div className={shell+" py-20 text-center lg:py-28"}><Reveal><span className={label}>MIRODIL HAYITOV · ARCHIVE</span><div className="mx-auto mt-10 h-px w-24 bg-[#c6aa7d]/50"/><p className="mx-auto mt-9 max-w-2xl text-[clamp(23px,2.8vw,37px)] italic leading-[1.5] text-[#d9c7ab]" style={serif}>{d.heroLead}</p></Reveal></div></section></>;
-}
+function Opening({lang}:{lang:Locale}){return <HomeHero lang={lang}/>;}
 function Chapter({lang,section,title,subtitle}:{lang:Locale;section:Page;title:string;subtitle:string}){
 const d=profile[lang];const n=pages.indexOf(section)+1;
 return <section className="relative overflow-hidden border-b border-[#c6aa7d]/20"><div className={shell+" relative pb-14 pt-20 lg:pb-20 lg:pt-28"}><div aria-hidden className="pointer-events-none absolute right-[6%] top-16 text-[250px] italic leading-none text-[#c7aa7d]/[.045]" style={serif}>0{n}</div><Reveal><Eyebrow index={"0"+n}>{d.section}</Eyebrow></Reveal>
@@ -124,5 +113,5 @@ const scaleX=useSpring(scrollYProgress,{stiffness:120,damping:27,restDelta:0.001
 return <MotionConfig reducedMotion="user"><div className="relative min-h-screen overflow-x-clip bg-[#0b100d] text-[#f0ebdf]" style={{backgroundImage:"radial-gradient(ellipse at 85% 0%,rgba(141,110,67,.13),transparent 37%),radial-gradient(ellipse at 0% 67%,rgba(48,67,49,.13),transparent 48%)"}}>
 <motion.div style={{scaleX,transformOrigin:"0%"}} aria-hidden className="fixed left-0 right-0 top-0 z-[80] h-[2px] bg-[#d2b184]"/>
 <div aria-hidden className="pointer-events-none fixed inset-0 opacity-[.045]" style={{backgroundImage:"url(\"data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E\")"}}/>
-<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:page==="public-life"?<Activities lang={lang}/>:<MediaPage lang={lang}/>}</main><Footer lang={lang}/></div></MotionConfig>;
+<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:page==="public-life"?<Activities lang={lang}/>:<MediaPage lang={lang}/>}</main><Footer lang={lang} home={!page}/></div></MotionConfig>;
 }
