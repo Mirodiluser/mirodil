@@ -33,7 +33,7 @@ export function HomeHero({ lang }: { lang: Locale }) {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.18, ease }}
           style={serif}
-          className="relative z-10 min-w-0 text-[clamp(76px,11.5vw,172px)] leading-[.84] tracking-[-.085em] lg:text-[clamp(92px,8.9vw,144px)]"
+          className="relative z-10 min-w-0 text-[clamp(60px,11.5vw,172px)] leading-[.84] tracking-[-.085em] lg:text-[clamp(92px,8.9vw,144px)]"
         >
           <span className="block whitespace-nowrap text-[#f3eedf]">Mirodil</span>
           <span className="mt-5 block whitespace-nowrap italic text-[#d1b790]">
