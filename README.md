@@ -33,3 +33,13 @@ For SEO, set `NEXT_PUBLIC_SITE_URL` to the canonical production URL. `NEXT_PUBLI
 - `components/CertificateShowcase.tsx`: test result cards
 - `components/MediaPage.tsx`: press gallery
 - `components/MediaAsset.tsx`: responsive image display and zoom
+
+## Product screenshots (November 2026)
+
+Two subject-supplied screenshots were integrated as real, uncropped project visuals:
+
+- \`public/projects/tahrir-preview.webp\`: Tahrir AI platform overview (project site: https://tahrirai.uz).
+- \`public/projects/boburnoma-preview.webp\`: Boburnoma text platform overview.
+
+Both are optimized WebP images and embedded in large interactive browser-frame previews on \`/{lang}/projects\` with a full-image native dialog. The site logo, biography, Home layout and other pages are not changed. UWED AI retains the branded abstract visual while the project remains under private development.
+

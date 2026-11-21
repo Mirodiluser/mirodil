@@ -7,6 +7,7 @@ import {ArrowUpRight,ChevronDown,FileText,Globe2,Menu,X} from "lucide-react";
 import {locales,pages,profile,sourceLinks,type Locale,type Page} from "@/lib/profile";
 import {CertificateShowcase} from "./CertificateShowcase";
 import {MediaPage} from "./MediaPage";
+import { ProjectPreview } from "./ProjectPreview";
 import {HomeHero} from "./HomeHero";
 import {BrandLogo} from "./BrandLogo";
 import {EnglishAward,SportsAwards} from "./AwardsShowcase";
@@ -95,21 +96,85 @@ return <><Chapter lang={lang} section="academic" title={d.academicTitle} subtitl
 <EnglishAward lang={lang}/>
 <div className={shell+" flex flex-wrap items-center justify-between gap-6 py-12"}><span className={label}>UWED · ACADEMIC LYCEUM</span><a href={sourceLinks[0].href} target="_blank" rel="noopener noreferrer" className={"group inline-flex items-center gap-3 text-[12px] text-[#e4c89b] hover:text-white "+ring}>{d.openSource}<motion.span whileHover={{x:3,y:-3}}><ArrowUpRight size={17}/></motion.span></a></div></>;
 }
-function Projects({lang}:{lang:Locale}){const d=profile[lang];
-return <><Chapter lang={lang} section="projects" title={d.projectsTitle} subtitle={d.projectsSubtitle}/>
-<section className={shell+" py-14 lg:py-20"}>{d.projects.map((item,i)=><article key={item.title} className="lux-project-article group grid gap-12 border-b border-[#c6aa7d]/25 py-20 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
-<Reveal><Eyebrow index={"0"+(i+1)}>{item.category}</Eyebrow><h2 className="mt-11 text-[clamp(59px,6.6vw,98px)] leading-[.98] tracking-[-.065em] text-[#ece5d7] transition-colors duration-500 group-hover:text-[#e6d0aa]" style={serif}>{item.title}</h2>
-<motion.div whileHover={{borderColor:"rgba(202,172,123,0.65)",scale:1.012}} transition={{type:"spring",stiffness:170,damping:24}} className="lux-project-art relative mt-12 flex h-[290px] items-center justify-center overflow-hidden border border-[#c6aa7d]/20 bg-[#131a14]">
-<div aria-hidden className="absolute h-52 w-52 rotate-45 border border-[#c6aa7d]/20"/><div aria-hidden className="absolute h-44 w-44 rounded-full border border-[#c6aa7d]/30"/>
-<span className="text-[125px] italic text-[#ccb182]/30" style={serif}>{i===0?"T":i===1?"B":"U"}</span></motion.div></Reveal>
-<Reveal delay={0.1} className="flex flex-col justify-center"><p className="max-w-xl text-[clamp(21px,2.35vw,31px)] leading-[1.7] text-[#d9d8cc]">{item.description}</p>
-<div className="mt-10 border-t border-[#c6aa7d]/25">{item.details.map((fact,j)=><div key={j} className="grid grid-cols-[52px_1fr] gap-6 border-b border-[#c6aa7d]/20 py-5 text-[15px] text-[#aeb5a9]"><span className="text-[#c3a478]">0{j+1}</span>{fact}</div>)}</div>
-<p className="mt-9 text-[11px] tracking-[.16em] text-[#c9ab7e]">{item.status}</p>
-<div className="mt-8 flex flex-wrap items-center gap-x-9 gap-y-6">
-{item.website&&<motion.a whileHover={{x:4}} whileTap={{scale:0.98}} className={"inline-flex w-fit items-center gap-3 border-b border-[#d6bc91]/65 pb-2 text-[12px] text-[#f1d5a5] "+ring} target="_blank" rel="noopener noreferrer" href={item.website}>{projectLinks[lang].website}<ArrowUpRight size={16}/></motion.a>}
-{item.href&&<motion.a whileHover={{x:4}} whileTap={{scale:0.98}} className={"inline-flex w-fit items-center gap-3 border-b border-[#c6aa7d]/50 pb-2 text-[12px] text-[#d2d2c1] "+ring} target="_blank" rel="noopener noreferrer" href={item.href}>{projectLinks[lang].code}<ArrowUpRight size={16}/></motion.a>}
-</div>
-</Reveal></article>)}</section></>;
+function Projects({lang}:{lang:Locale}) {
+  const d = profile[lang];
+  const previewAssets = [
+    { src: "/projects/tahrir-preview.webp", width: 1100, height: 625 },
+    { src: "/projects/boburnoma-preview.webp", width: 1100, height: 626 },
+  ];
+  return <>
+    <Chapter lang={lang} section="projects" title={d.projectsTitle} subtitle={d.projectsSubtitle}/>
+    <section className={shell + " pb-20 pt-6 lg:pb-32 lg:pt-10"}>
+      {d.projects.map((item, i) => (
+        <article key={item.title} className="lux-project-article group border-b border-[#c6aa7d]/25 py-20 first:pt-14 lg:py-32">
+          <div className="grid items-end gap-9 lg:grid-cols-[.88fr_1.12fr] lg:gap-24">
+            <Reveal>
+              <Eyebrow index={"0"+(i+1)}>{item.category}</Eyebrow>
+              <h2
+                className="mt-9 max-w-[700px] text-[clamp(58px,7.2vw,109px)] leading-[.96] tracking-[-.07em] text-[#ede6d9] transition-colors duration-500 group-hover:text-[#e6d0aa]"
+                style={serif}
+              >
+                {item.title}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="max-w-[640px] border-l border-[#c4a778]/45 pl-7 text-[clamp(20px,2.25vw,30px)] leading-[1.75] text-[#c5c8bb]">
+                {item.description}
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-12 lg:mt-16">
+            {i < 2 ? (
+              <ProjectPreview
+                src={previewAssets[i].src}
+                width={previewAssets[i].width}
+                height={previewAssets[i].height}
+                title={item.title}
+                lang={lang}
+                index={i+1}
+              />
+            ) : (
+              <Reveal>
+                <div className="lux-project-art relative mx-auto flex h-[300px] w-full max-w-[1210px] items-center justify-center overflow-hidden border border-[#c6aa7d]/25 bg-[#111712] sm:h-[390px]">
+                  <div aria-hidden className="absolute h-72 w-72 rotate-45 border border-[#c6aa7d]/15" />
+                  <div aria-hidden className="absolute h-56 w-56 rounded-full border border-[#c6aa7d]/25" />
+                  <div aria-hidden className="absolute h-36 w-36 rounded-full border border-[#c6aa7d]/15" />
+                  <span className="relative text-[clamp(135px,18vw,210px)] italic leading-none text-[#cbb184]/25" style={serif}>U</span>
+                </div>
+              </Reveal>
+            )}
+          </div>
+
+          <Reveal className="mx-auto mt-12 grid max-w-[1210px] gap-9 border-t border-[#c6aa7d]/20 pt-9 lg:grid-cols-[1.05fr_.95fr] lg:gap-20" delay={0.05}>
+            <div className="grid gap-0 sm:grid-cols-3 sm:divide-x sm:divide-[#c6aa7d]/20">
+              {item.details.map((fact,j)=>(
+                <div key={j} className="border-b border-[#c6aa7d]/15 py-4 sm:border-b-0 sm:px-5 sm:py-3 sm:first:pl-0">
+                  <span className="block text-[10px] tracking-[.16em] text-[#c5a577]">0{j+1}</span>
+                  <p className="mt-3 max-w-[220px] text-[13px] leading-[1.7] text-[#afb7aa]">{fact}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col justify-center gap-5 lg:items-end">
+              <span className="text-[10px] tracking-[.16em] text-[#d3b480]">{item.status}</span>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-5 lg:justify-end">
+                {item.website&&(
+                  <motion.a whileHover={{x:4}} whileTap={{scale:.98}} className={"inline-flex items-center gap-2 border-b border-[#d6bc91]/65 pb-2 text-[12px] text-[#f1d5a5] "+ring} target="_blank" rel="noopener noreferrer" href={item.website}>
+                    {projectLinks[lang].website}<ArrowUpRight size={16}/>
+                  </motion.a>
+                )}
+                {item.href&&(
+                  <motion.a whileHover={{x:4}} whileTap={{scale:.98}} className={"inline-flex items-center gap-2 border-b border-[#c6aa7d]/50 pb-2 text-[12px] text-[#d2d2c1] "+ring} target="_blank" rel="noopener noreferrer" href={item.href}>
+                    {projectLinks[lang].code}<ArrowUpRight size={16}/>
+                  </motion.a>
+                )}
+              </div>
+            </div>
+          </Reveal>
+        </article>
+      ))}
+    </section>
+  </>;
 }
 function Activities({lang}:{lang:Locale}){const d=profile[lang];
 return <><Chapter lang={lang} section="public-life" title={d.lifeTitle} subtitle={d.lifeSubtitle}/>
