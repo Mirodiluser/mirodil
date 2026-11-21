@@ -16,6 +16,7 @@ export async function generateMetadata({params}:{params:Promise<{lang:string}>})
    title:{default:"Mirodil Hayitov | Personal Archive",template:"%s | Mirodil Hayitov"},
    description:c.meta,
    applicationName:"Mirodil Hayitov — Personal Archive",
+   icons:{icon:"/brand/mh-monogram.webp",shortcut:"/brand/mh-monogram.webp"},
    alternates:{canonical:"/"+lang,languages:Object.fromEntries(locales.map(l=>[l,"/"+l]))},
    openGraph:{type:"profile",title:"Mirodil Hayitov | Personal Archive",description:c.meta,siteName:"Mirodil Hayitov",locale:lang},
    robots:{index:approved,follow:approved},

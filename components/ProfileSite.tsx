@@ -8,6 +8,7 @@ import {locales,pages,profile,sourceLinks,type Locale,type Page} from "@/lib/pro
 import {CertificateShowcase} from "./CertificateShowcase";
 import {MediaPage} from "./MediaPage";
 import {HomeHero} from "./HomeHero";
+import {BrandLogo} from "./BrandLogo";
 import {EnglishAward,SportsAwards} from "./AwardsShowcase";
 
 const serif={fontFamily:"'Iowan Old Style', Baskerville, Georgia, serif"};
@@ -38,7 +39,7 @@ const entries:[string,string][]=[[d.nav[0],"/"+lang],...pages.map((key,i)=>[d.na
 return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b0f0d]/90 backdrop-blur-2xl">
 <div className={shell+" flex h-[84px] items-center justify-between gap-5"}>
 <Link href={"/"+lang} aria-label="Mirodil Hayitov" className={"flex min-w-0 items-center gap-4 "+ring}>
-<motion.span whileHover={{scale:1.04,rotate:-2}} transition={{type:"spring",stiffness:320,damping:20}} className="flex h-12 w-12 items-center justify-center border border-[#c8ac7e]/65 text-[23px] tracking-[-.12em] text-[#edd2a7]" style={serif}>MH<span className="text-[#a78351]">.</span></motion.span>
+<BrandLogo size="nav"/>
 <span className="hidden sm:flex flex-col gap-1.5"><strong className="text-[11px] tracking-[.16em] text-[#f0ecdf]">MIRODIL HAYITOV</strong><span className="text-[9px] tracking-[.23em] text-[#9a9e92]">{d.k}</span></span></Link>
 <nav className="hidden items-center gap-5 xl:gap-8 lg:flex" aria-label={d.navLabel}>
 {entries.map(([name,url],i)=>{const active=i===0?!section:section===pages[i-1];return <Link prefetch href={url} key={url} aria-current={active?"page":undefined} className={"relative py-7 text-[11px] tracking-[.04em] "+ring+(active?" text-[#ebd1a2]":" text-[#adb3a8] hover:text-[#ebd1a2]")}>
@@ -53,14 +54,22 @@ return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b
 {mobile&&<motion.nav initial={{opacity:0,height:0}} animate={{opacity:1,height:"auto"}} className={shell+" grid overflow-hidden border-t border-[#c6aa7d]/20 bg-[#0d130e] py-4 lg:hidden"}>{entries.map(([name,url],i)=><Link className={"border-b border-[#c6aa7d]/15 py-4 text-[15px] "+(i===0&&!section||pages[i-1]===section?"text-[#e7ca9c]":"text-[#d2d3c7]")} key={url} href={url}>{name}</Link>)}</motion.nav>}
 </header>;
 }
-function Footer({lang,home}:{lang:Locale;home:boolean}){
+function Footer({lang}:{lang:Locale}){
 const d=profile[lang];
-return <footer className="border-t border-[#c6aa7d]/20 bg-[#080b09]"><div className={shell+" flex min-h-[174px] items-center"}>
-<span className="block text-[49px] italic tracking-[-.1em] text-[#c7ac81]" style={serif}>MH.</span>
-</div></footer>;
-return <footer className="border-t border-[#c6aa7d]/20 bg-[#080b09]"><div className={shell+" flex flex-wrap items-end justify-between gap-12 py-14"}>
-<div><span className="block text-[47px] italic tracking-[-.1em] text-[#c7ac81]" style={serif}>MH.</span><p className="mt-4 text-[23px]" style={serif}>Mirodil Hayitov</p><p className={"mt-3 max-w-md text-[12px] leading-[1.9] "+muted}>{d.homeClosing}</p></div>
-<div className="text-[10px] tracking-[.17em] text-[#8f988c]">© 2026 MIRODIL HAYITOV <span className="mx-3 text-[#947e5e]">/</span> {d.k}</div></div></footer>;
+return <footer className="relative border-t border-[#c6aa7d]/20 bg-[#080b09]">
+<div className={shell+" flex min-h-[220px] flex-col justify-between gap-12 py-9 sm:flex-row sm:items-end sm:gap-14 sm:py-10"}>
+  <div className="max-w-[420px]">
+    <BrandLogo size="footer"/>
+    <p className="mt-3 text-[22px] tracking-[-.02em] text-[#f1eadd] sm:text-[24px]" style={serif}>Mirodil Hayitov</p>
+    <p className={"mt-3 max-w-[390px] text-[12px] leading-[1.95] "+muted}>{d.homeClosing}</p>
+  </div>
+  <p className="pb-1 text-[9px] font-medium uppercase leading-6 tracking-[.19em] text-[#a3a79c] sm:text-right sm:text-[10px]">
+    <span>© 2026 MIRODIL HAYITOV</span>
+    <span className="mx-4 text-[#b49b73]">/</span>
+    <span>{d.k}</span>
+  </p>
+</div>
+</footer>;
 }
 function Opening({lang}:{lang:Locale}){return <HomeHero lang={lang}/>;}
 function Chapter({lang,section,title,subtitle}:{lang:Locale;section:Page;title:string;subtitle:string}){
@@ -113,5 +122,5 @@ const scaleX=useSpring(scrollYProgress,{stiffness:120,damping:27,restDelta:0.001
 return <MotionConfig reducedMotion="user"><div className="relative min-h-screen overflow-x-clip bg-[#0b100d] text-[#f0ebdf]" style={{backgroundImage:"radial-gradient(ellipse at 85% 0%,rgba(141,110,67,.13),transparent 37%),radial-gradient(ellipse at 0% 67%,rgba(48,67,49,.13),transparent 48%)"}}>
 <motion.div style={{scaleX,transformOrigin:"0%"}} aria-hidden className="fixed left-0 right-0 top-0 z-[80] h-[2px] bg-[#d2b184]"/>
 <div aria-hidden className="pointer-events-none fixed inset-0 opacity-[.045]" style={{backgroundImage:"url(\"data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E\")"}}/>
-<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:page==="public-life"?<Activities lang={lang}/>:<MediaPage lang={lang}/>}</main><Footer lang={lang} home={!page}/></div></MotionConfig>;
+<Nav lang={lang} section={page}/><main id="main">{!page?<Opening lang={lang}/>:page==="biography"?<Biography lang={lang}/>:page==="academic"?<Academic lang={lang}/>:page==="projects"?<Projects lang={lang}/>:page==="public-life"?<Activities lang={lang}/>:<MediaPage lang={lang}/>}</main><Footer lang={lang}/></div></MotionConfig>;
 }
