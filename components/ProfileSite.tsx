@@ -36,13 +36,13 @@ const [mobile,setMobile]=useState(false);
 const [languages,setLanguages]=useState(false);
 useEffect(()=>{setMobile(false);setLanguages(false)},[lang,section]);
 const entries:[string,string][]=[[d.nav[0],"/"+lang],...pages.map((key,i)=>[d.nav[i+1],"/"+lang+"/"+key] as [string,string])];
-return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b0f0d]/90 backdrop-blur-2xl">
+return <header className="site-header sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b0f0d]/90 shadow-[0_12px_35px_rgba(0,0,0,.12)] backdrop-blur-2xl">
 <div className={shell+" flex h-[84px] items-center justify-between gap-5"}>
 <Link href={"/"+lang} aria-label="Mirodil Hayitov" className={"flex min-w-0 items-center gap-4 "+ring}>
 <BrandLogo size="nav"/>
 <span className="hidden sm:flex flex-col gap-1.5"><strong className="text-[11px] tracking-[.16em] text-[#f0ecdf]">MIRODIL HAYITOV</strong><span className="text-[9px] tracking-[.23em] text-[#9a9e92]">{d.k}</span></span></Link>
 <nav className="hidden items-center gap-5 xl:gap-8 lg:flex" aria-label={d.navLabel}>
-{entries.map(([name,url],i)=>{const active=i===0?!section:section===pages[i-1];return <Link prefetch href={url} key={url} aria-current={active?"page":undefined} className={"relative py-7 text-[11px] tracking-[.04em] "+ring+(active?" text-[#ebd1a2]":" text-[#adb3a8] hover:text-[#ebd1a2]")}>
+{entries.map(([name,url],i)=>{const active=i===0?!section:section===pages[i-1];return <Link prefetch href={url} key={url} aria-current={active?"page":undefined} className={"lux-nav-item relative py-7 text-[11px] tracking-[.04em] "+ring+(active?" text-[#ebd1a2]":" text-[#adb3a8] hover:text-[#ebd1a2]")}>
 <motion.span className="inline-block" whileHover={{y:-2}} whileTap={{scale:0.96}} transition={{type:"spring",stiffness:400,damping:24}}>{name}</motion.span>
 {active&&<motion.span layoutId="active-nav" transition={{type:"spring",stiffness:400,damping:32}} className="absolute bottom-4 left-0 right-0 h-px bg-[#c5a779]"/>}
 </Link>})}</nav>
@@ -56,10 +56,12 @@ return <header className="sticky top-0 z-50 border-b border-[#c6aa7d]/20 bg-[#0b
 }
 function Footer({lang}:{lang:Locale}){
 const d=profile[lang];
-return <footer className="relative border-t border-[#c6aa7d]/20 bg-[#080b09]">
-<div className={shell+" flex min-h-[220px] flex-col justify-between gap-12 py-9 sm:flex-row sm:items-end sm:gap-14 sm:py-10"}>
+return <footer className="site-footer relative isolate overflow-hidden border-t border-[#c6aa7d]/20 bg-[#080b09]">
+<div aria-hidden className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d5b788]/50 to-transparent"/>
+<div aria-hidden className="pointer-events-none absolute -bottom-40 -left-20 h-72 w-[440px] rounded-full bg-[#b08b5b]/[.055] blur-[115px]"/>
+<div className={shell+" relative flex min-h-[220px] flex-col justify-between gap-12 py-9 sm:flex-row sm:items-end sm:gap-14 sm:py-10"}>
   <div className="max-w-[420px]">
-    <BrandLogo size="footer"/>
+    <div className="relative w-fit drop-shadow-[0_0_26px_rgba(210,164,98,.11)]"><BrandLogo size="footer"/></div>
     <p className="mt-3 text-[22px] tracking-[-.02em] text-[#f1eadd] sm:text-[24px]" style={serif}>Mirodil Hayitov</p>
     <p className={"mt-3 max-w-[390px] text-[12px] leading-[1.95] "+muted}>{d.homeClosing}</p>
   </div>
@@ -74,7 +76,7 @@ return <footer className="relative border-t border-[#c6aa7d]/20 bg-[#080b09]">
 function Opening({lang}:{lang:Locale}){return <HomeHero lang={lang}/>;}
 function Chapter({lang,section,title,subtitle}:{lang:Locale;section:Page;title:string;subtitle:string}){
 const d=profile[lang];const n=pages.indexOf(section)+1;
-return <section className="relative overflow-hidden border-b border-[#c6aa7d]/20"><div className={shell+" relative pb-14 pt-20 lg:pb-20 lg:pt-28"}><div aria-hidden className="pointer-events-none absolute right-[6%] top-16 text-[250px] italic leading-none text-[#c7aa7d]/[.045]" style={serif}>0{n}</div><Reveal><Eyebrow index={"0"+n}>{d.section}</Eyebrow></Reveal>
+return <section className="lux-chapter relative overflow-hidden border-b border-[#c6aa7d]/20"><div className={shell+" relative pb-14 pt-20 lg:pb-20 lg:pt-28"}><div aria-hidden className="pointer-events-none absolute right-[6%] top-16 text-[250px] italic leading-none text-[#c7aa7d]/[.045]" style={serif}>0{n}</div><Reveal><Eyebrow index={"0"+n}>{d.section}</Eyebrow></Reveal>
 <Reveal delay={0.07}><h1 className="relative mt-12 max-w-[1180px] text-[clamp(56px,7.5vw,122px)] leading-[.99] tracking-[-.065em] text-[#f2ecdf]" style={serif}>{title}<span className="text-[#ba9b70]">.</span></h1></Reveal>
 <Reveal delay={0.16}><p className="mt-11 max-w-3xl border-l border-[#c6aa7d]/60 pl-7 text-[clamp(20px,2.3vw,31px)] leading-[1.62] text-[#b9bfb3]">{subtitle}</p></Reveal>
 <div className="mt-20 flex justify-between gap-4 border-t border-[#c6aa7d]/20 pt-6 text-[10px] tracking-[.17em] text-[#9ea596]"><span>{d.navLabel} / {d.nav[n]}</span><span>0{n} / 05</span></div></div></section>;
@@ -95,9 +97,9 @@ return <><Chapter lang={lang} section="academic" title={d.academicTitle} subtitl
 }
 function Projects({lang}:{lang:Locale}){const d=profile[lang];
 return <><Chapter lang={lang} section="projects" title={d.projectsTitle} subtitle={d.projectsSubtitle}/>
-<section className={shell+" py-14 lg:py-20"}>{d.projects.map((item,i)=><article key={item.title} className="grid gap-12 border-b border-[#c6aa7d]/25 py-20 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
-<Reveal><Eyebrow index={"0"+(i+1)}>{item.category}</Eyebrow><h2 className="mt-11 text-[clamp(59px,6.6vw,98px)] leading-[.98] tracking-[-.065em] text-[#ece5d7]" style={serif}>{item.title}</h2>
-<motion.div whileHover={{borderColor:"rgba(202,172,123,0.65)",scale:1.012}} transition={{type:"spring",stiffness:170,damping:24}} className="relative mt-12 flex h-[290px] items-center justify-center overflow-hidden border border-[#c6aa7d]/20 bg-[#131a14]">
+<section className={shell+" py-14 lg:py-20"}>{d.projects.map((item,i)=><article key={item.title} className="lux-project-article group grid gap-12 border-b border-[#c6aa7d]/25 py-20 lg:grid-cols-[.85fr_1.15fr] lg:gap-24">
+<Reveal><Eyebrow index={"0"+(i+1)}>{item.category}</Eyebrow><h2 className="mt-11 text-[clamp(59px,6.6vw,98px)] leading-[.98] tracking-[-.065em] text-[#ece5d7] transition-colors duration-500 group-hover:text-[#e6d0aa]" style={serif}>{item.title}</h2>
+<motion.div whileHover={{borderColor:"rgba(202,172,123,0.65)",scale:1.012}} transition={{type:"spring",stiffness:170,damping:24}} className="lux-project-art relative mt-12 flex h-[290px] items-center justify-center overflow-hidden border border-[#c6aa7d]/20 bg-[#131a14]">
 <div aria-hidden className="absolute h-52 w-52 rotate-45 border border-[#c6aa7d]/20"/><div aria-hidden className="absolute h-44 w-44 rounded-full border border-[#c6aa7d]/30"/>
 <span className="text-[125px] italic text-[#ccb182]/30" style={serif}>{i===0?"T":i===1?"B":"U"}</span></motion.div></Reveal>
 <Reveal delay={0.1} className="flex flex-col justify-center"><p className="max-w-xl text-[clamp(21px,2.35vw,31px)] leading-[1.7] text-[#d9d8cc]">{item.description}</p>

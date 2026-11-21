@@ -17,7 +17,7 @@ const accent={
 function Feature({item,lang,large=false}:{item:AwardData;lang:Locale;large?:boolean}){
  const d=awards[lang];const reduce=useReducedMotion();const palette=accent[item.accent];
  return <motion.article initial={reduce?false:{opacity:0,y:28}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:0.16}} transition={{duration:.78,ease:[.22,1,.36,1]}}
-   className={"group grid gap-8 border p-5 sm:p-8 "+(large?"lg:grid-cols-[1.02fr_.98fr] lg:gap-14":"") + " "+palette.panel+" "+palette.border}>
+   className={"lux-frame group grid gap-8 border p-5 sm:p-8 "+(large?"lg:grid-cols-[1.02fr_.98fr] lg:gap-14":"") + " "+palette.panel+" "+palette.border}>
   <div className="min-w-0">
    <div className="flex flex-wrap items-center justify-between gap-4"><span className={label}>{item.id==="english"?"LANGUAGE / 2026":item.id==="chess"?"CHESS / 2022":"BOXING / 2025"}</span><span className="text-[10px] tracking-[.16em] text-[#a9ad9e]">{d.awardType}</span></div>
    <div className={"mt-7 w-12 h-px "+palette.line}/>

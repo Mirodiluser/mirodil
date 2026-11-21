@@ -91,3 +91,25 @@ body { margin:0; background:#0b100d; }
  .lux-portal::after,.lux-frame,.lux-media,.lux-nav-item::after {transition:none!important;transform:none!important;}
  .lux-portal::before,.lux-frame:hover::after {opacity:0!important;}
 }
+
+
+.site-header {background-image:linear-gradient(180deg,rgba(210,176,114,.025),transparent 100%);}
+.site-header::after {
+ content:"";position:absolute;left:7%;right:7%;bottom:-1px;height:1px;pointer-events:none;
+ background:linear-gradient(90deg,transparent,rgba(214,177,119,.25),transparent);
+}
+.lux-chapter { background:radial-gradient(ellipse at 85% 30%,rgba(160,124,76,.085),transparent 49%); }
+.lux-chapter::before {
+ content:"";position:absolute;right:-9rem;top:-13rem;width:33rem;height:33rem;pointer-events:none;
+ border:1px solid rgba(192,157,103,.09);border-radius:50%;
+ box-shadow:0 0 0 95px rgba(192,157,103,.016),0 0 0 195px rgba(192,157,103,.011);
+}
+.lux-project-art::before {
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(circle at 49% 45%,rgba(212,180,121,.10),transparent 62%);
+}
+@media (hover:hover) and (pointer:fine) {
+  .lux-project-art {transition:box-shadow .65s ease,border-color .65s ease;}
+  .lux-project-article:hover .lux-project-art {box-shadow:0 20px 65px rgba(0,0,0,.22),inset 0 0 40px rgba(217,178,114,.045);border-color:rgba(220,181,123,.48);}
+  .lux-interview-row:hover h3 {color:#e4c99c;transition:color .6s ease;}
+}

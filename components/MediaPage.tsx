@@ -18,7 +18,7 @@ export function MediaPage({lang}:{lang:Locale}){
 const d=press[lang];const reduced=useReducedMotion();
 return <><Intro lang={lang}/>
 <section className={shell+" py-24 lg:py-32"}><div className="flex items-center gap-4"><Radio size={18} className="text-[#c9ac7e]"/><span className={label}>01 / BROADCAST</span></div><h2 className="mt-9 text-[clamp(51px,5.8vw,83px)] leading-[1.08] tracking-[-.055em]" style={serif}>{d.television}</h2>
-<div className="mt-16 space-y-24 lg:space-y-32">{d.programs.map((item,i)=><article key={item.title} className={"grid items-center gap-12 lg:gap-20 "+(i===0?"lg:grid-cols-[1.1fr_.9fr]":"lg:grid-cols-[.9fr_1.1fr]")}>
+<div className="mt-16 space-y-24 lg:space-y-32">{d.programs.map((item,i)=><article key={item.title} className={"lux-interview-row grid items-center gap-12 lg:gap-20 "+(i===0?"lg:grid-cols-[1.1fr_.9fr]":"lg:grid-cols-[.9fr_1.1fr]")}>
 <div className={i===1?"lg:order-2":""}><MediaAsset src={item.image} alt={item.alt} aspect={i===0?"4/5":"16/10"} caption={d.openPhoto} contain/></div>
 <motion.div initial={reduced?false:{opacity:0,y:26}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.15}} transition={{duration:.75,ease:[.22,1,.36,1]}} className={i===1?"lg:order-1":""}>
 <p className={label}>{item.overline}</p><div className="mt-7 h-px w-16 bg-[#c9ac7e]/55"/><h3 className="mt-11 text-[clamp(54px,6.1vw,91px)] leading-[1.03] tracking-[-.055em] text-[#efe7d9]" style={serif}>{item.title}</h3><p className="mt-9 max-w-xl text-[clamp(19px,2vw,25px)] leading-[1.85] text-[#b7bfb1]">{item.intro}</p><p className="mt-9 border-t border-[#c6aa7d]/20 pt-7 text-[12px] leading-7 text-[#a6ac9e]">{d.sourcesNote}</p>
